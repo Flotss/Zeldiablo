@@ -55,4 +55,9 @@ public class LabyJeu implements Jeu {
   public boolean etreFini() {
     return laby.etreFini();
   }
+
+  public Labyrinthe getLaby() {
+    return laby;
+  }
+
 }
