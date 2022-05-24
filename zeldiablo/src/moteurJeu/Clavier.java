@@ -53,25 +53,29 @@ public class Clavier {
      */
     public void relacherTouche(KeyEvent event) {
 
-        switch (event.getCode()) {
+        switch (event.getCode().toString()) {
 
             // si touche bas
-            case S:
+            case "S":
+            case "DOWN":
                 this.bas = false;
                 break;
 
             // si touche haut
-            case Z:
+            case "Z":
+            case "UP":
                 this.haut = false;
                 break;
 
             // si touche gauche
-            case Q:
+            case "Q":
+            case "LEFT":
                 this.gauche = false;
                 break;
 
             // si touche droite
-            case D:
+            case "D":
+            case "RIGHT":
                 this.droite = false;
                 break;
 
