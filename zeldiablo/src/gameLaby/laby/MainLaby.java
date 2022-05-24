@@ -6,12 +6,12 @@ import java.io.IOException;
 
 public class MainLaby {
   public static void main(String[] args) throws IOException {
-    int width = 800;
-    int height = 600;
     int pFPS = 20;
 
     // creation des objets
-    LabyJeu jeuLab = new LabyJeu("labySimple/laby1.txt");
+    LabyJeu jeuLab = new LabyJeu("labySimple/laby2.txt");
+    int width = jeuLab.getLaby().getLength()*60;
+    int height = jeuLab.getLaby().getLengthY()*60;
     LabyDessin dessinLab = new LabyDessin();
 
     // parametrage du moteur de jeu
