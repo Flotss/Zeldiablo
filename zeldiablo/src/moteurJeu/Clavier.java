@@ -16,25 +16,29 @@ public class Clavier {
      */
     public void appuyerTouche(KeyEvent event) {
 
-        switch (event.getCode()) {
+        switch (event.getCode().toString()) {
 
             // si touche bas
-            case S:
+            case "S":
+            case "DOWN":
                 this.bas = true;
                 break;
 
             // si touche haut
-            case Z:
+            case "Z":
+            case "UP":
                 this.haut = true;
                 break;
 
             // si touche gauche
-            case Q:
+            case "Q":
+            case "LEFT":
                 this.gauche = true;
                 break;
 
             // si touche droite
-            case D:
+            case "D":
+            case "RIGHT":
                 this.droite = true;
                 break;
 
