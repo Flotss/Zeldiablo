@@ -20,6 +20,9 @@ public class LabyDessin implements DessinJeu {
         LabyJeu labyJeu = (LabyJeu) jeu;
         final GraphicsContext gc = canvas.getGraphicsContext2D();
 
+        gc.setFill(Color.LIGHTGRAY);
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
         for(int i = 0 ; i < labyJeu.getLaby().murs.length ; i++){
             for(int j = 0 ; j < labyJeu.getLaby().murs[i].length ; j++){
                 if(labyJeu.getLaby().getMur(i,j)){
