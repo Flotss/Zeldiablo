@@ -1,0 +1,62 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+create Main
+participant MoteurJeu
+create labyJeu
+Main -> labyJeu: new
+create LabyDessin
+Main -> LabyDessin: new
+
+Main -> labyJeu: getLaby()
+activate labyJeu
+labyJeu -> labyJeu: getLength()
+Main <-- labyJeu: int
+deactivate labyJeu
+
+
+Main -> labyJeu: getLaby()
+activate labyJeu
+labyJeu -> labyJeu: getLengthY()
+Main <-- labyJeu: int
+deactivate labyJeu
+
+Main -> MoteurJeu: setTaille(width, height)
+activate MoteurJeu
+Main <-- MoteurJeu:
+deactivate MoteurJeu
+
+Main -> MoteurJeu: setFPS(pFPS)
+activate MoteurJeu
+Main <-- MoteurJeu:
+deactivate MoteurJeu
+
+Main -> MoteurJeu: launch(jeuLab, dessinLab)
+activate MoteurJeu
+create Clavier
+MoteurJeu -> Clavier: new
+create Canvas
+MoteurJeu -> Canvas: new
+
+
+loop Timer
+Joueur -> Clavier: appuyerTouche(keyevent)
+activate Clavier
+Clavier --> Joueur
+deactivate
+
+MoteurJeu -> labyJeu: update(duree, clavier)
+activate labyJeu
+labyJeu --> MoteurJeu
+deactivate labyJeu
+MoteurJeu -> dessinLab: drawGame(g.canvas
+activate dessinLab
+dessinLab --> MoteurJeu
+deactivate dessinLab
+deactivate MoteurJeu
+end
+
+
+@enduml
