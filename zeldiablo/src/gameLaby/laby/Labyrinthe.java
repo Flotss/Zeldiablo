@@ -278,4 +278,6 @@ public class Labyrinthe {
     public ArrayList<int[]> getEmplacementCaisse() {
         return emplacementCaisse;
     }
+
+
 }
