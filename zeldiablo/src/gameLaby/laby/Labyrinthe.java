@@ -275,8 +275,8 @@ public class Labyrinthe {
         return this.caisses[x][y];
     }
 
-    public boolean getEmplacementCaisse(int i) {
-        return this.emplacementCaisse.get(i);
+    public boolean contientCaisse(int i, int y) {
+        return this.emplacementCaisse.contains(i,y);
     }
 
 }
