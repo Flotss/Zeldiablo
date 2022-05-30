@@ -5,6 +5,8 @@ class Labyrinthe{
     + pj : Perso
     + murs : boolean[][]
     + caisses : boolean[][]
+    + emplacementCaisse ArrayList<int[]>
+    + labyFinis : boolean
     + getSuivant(pj : Perso) : int[]
     + deplacerPerso(pj : Perso, direction : int)
     + etreFinie() : Boolean
