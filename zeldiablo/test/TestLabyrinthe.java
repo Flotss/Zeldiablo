@@ -1,5 +1,3 @@
-
-import gameLaby.laby.Labyrinthe;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -54,5 +52,17 @@ public class TestLabyrinthe {
     public void deplacerPersoEtCaisse() {
 
     }
+
+  @Test
+  public void emplacementSortieCaisse(){
+    // Initialisation
+    Labyrinthe laby = new Labyrinthe("labySimple/labySokoban.txt");
+
+    //Verification de la position des sorties
+    assertTrue(laby.contientCaisse(6,1));
+    assertTrue(laby.contientCaisse(18,1));
+    assertTrue(laby.contientCaisse(5,7));
+    assertTrue(laby.contientCaisse(11,9));
+  }
 
 }
