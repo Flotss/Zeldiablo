@@ -17,6 +17,8 @@ public class Labyrinthe {
     public static final char MUR = 'X';
     public static final char PJ = 'P';
     public static final char VIDE = '.';
+    public static final char CAISSE = 'C';
+    public static final char EMPLACEMENT_CAISSE = 'O';
 
     /**
      * constantes actions possibles
@@ -39,7 +41,7 @@ public class Labyrinthe {
     /**
      * les caisses du labyrinthe
      */
-    public boolean[][] caisse;
+    public boolean[][] caisses;
 
     /**
      * retourne la case suivante selon une actions
@@ -165,8 +167,20 @@ public class Labyrinthe {
      * @param direction Direction du personnage
      * @return Si la caisse a ete deplacee
      */
-    public boolean deplacerCaise(int x, int y, String direction) {
-        throw new Error();
+    public boolean deplacerCaisse(int x, int y, String direction) {
+
+        // calcule case suivante
+        int[] suivante = getSuivant(x, y, direction);
+
+        // si c'est pas un mur, on effectue le deplacement
+        if (caseDisponible(suivante[0], suivante[1])) {
+            // on met a jour la caisse
+            this.caisses[x][y] = false;
+            this.caisses[suivante[0]][suivante[1]] = true;
+            // on renvoie true si la caisse a ete deplacee
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -177,7 +191,7 @@ public class Labyrinthe {
      * @return true si la case est disponible
      */
     public boolean caseDisponible(int x, int y) {
-        throw new Error();
+        return !this.murs[x][y];
     }
 
 
