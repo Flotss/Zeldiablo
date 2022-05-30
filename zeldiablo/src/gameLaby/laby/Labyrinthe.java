@@ -17,6 +17,7 @@ public class Labyrinthe {
     public static final char MUR = 'X';
     public static final char PJ = 'P';
     public static final char VIDE = '.';
+    public static final char SORTIE = 'O';
 
     /**
      * constantes actions possibles
@@ -40,6 +41,11 @@ public class Labyrinthe {
      * les caisses du labyrinthe
      */
     public boolean[][] caisse;
+
+    /**
+     * les sorties du labyrinthe
+     */
+     public boolean[][] sortie;
 
     /**
      * retourne la case suivante selon une actions
@@ -111,6 +117,9 @@ public class Labyrinthe {
                 switch (c) {
                     case MUR:
                         this.murs[colonne][numeroLigne] = true;
+                        break;
+                    case SORTIE:
+                        this.sortie[colonne][numeroLigne] = true;
                         break;
                     case VIDE:
                         this.murs[colonne][numeroLigne] = false;
