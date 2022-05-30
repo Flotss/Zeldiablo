@@ -33,13 +33,17 @@ public class LabyDessin implements DessinJeu {
 
             for (int i = 0; i < labyJeu.getLaby().murs.length; i++) {
                 for (int j = 0; j < labyJeu.getLaby().murs[i].length; j++) {
+                    if(labyJeu.getLaby().getGlace(i,j)){
+                        gc.setFill(Color.LIGHTBLUE);
+                        gc.fillRect(i * 60, j * 60, 60, 60);
+                    }
                     if (labyJeu.getLaby().getMur(i, j)) {
                         gc.setFill(Color.BLACK);
                         gc.fillRect(i * 60, j * 60, 60, 60);
                     }
                     if (labyJeu.getLaby().getCaisse(i, j)) {
                         gc.setFill(Color.BROWN);
-                        gc.fillRect(i * 60, j * 60, 60, 60);
+                        gc.fillRect(i * 60+5, j * 60+5, 50, 50);
                     }
                 }
             }

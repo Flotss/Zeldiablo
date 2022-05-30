@@ -20,6 +20,7 @@ public class Labyrinthe {
     public static final char VIDE = '.';
     public static final char CAISSE = 'C';
     public static final char EMPLACEMENT_CAISSE = 'O';
+    public static final char glacee = 'G';
 
     /**
      * constantes actions possibles
@@ -53,6 +54,11 @@ public class Labyrinthe {
      * Boolean permettant de savoir si le labyrinthe est finis ou non
      */
     public boolean labyFinis = false;
+
+    /**
+     * les cases glacée du labyrinthe
+     */
+    public boolean[][] glace;
 
     /**
      * retourne la case suivante selon une actions
@@ -109,6 +115,7 @@ public class Labyrinthe {
         this.murs = new boolean[nbColonnes][nbLignes];
         this.caisses = new boolean[nbColonnes][nbLignes];
         this.pj = null;
+        this.glace = new boolean[nbColonnes][nbLignes];
 
         // lecture des cases
         String ligne = bfRead.readLine();
@@ -143,6 +150,8 @@ public class Labyrinthe {
                         this.murs[colonne][numeroLigne] = false;
                         // ajoute PJ
                         this.pj = new Perso(colonne, numeroLigne);
+                    case glacee:
+                        this.glace[colonne][numeroLigne] = true;
                         break;
 
 
@@ -168,22 +177,35 @@ public class Labyrinthe {
      * @param action une des actions possibles
      */
     public void deplacerPerso(String action) {
-        // case courante
-        int[] courante = {this.pj.x, this.pj.y};
 
-        // calcule case suivante
-        int[] suivante = getSuivant(courante[0], courante[1], action);
-        if (caisses[suivante[0]][suivante[1]]) {
-            // on a une caisse
-            deplacerCaisse(suivante[0], suivante[1], action);
-            labyFinis = etreFini();
-        }
-        // si c'est pas un mur, on effectue le deplacement
-        if (!this.murs[suivante[0]][suivante[1]] && !caisses[suivante[0]][suivante[1]]) {
-            // on met a jour personnage
-            this.pj.x = suivante[0];
-            this.pj.y = suivante[1];
-        }
+        //On repete le deplacement tant que la case sur laquelle le personnage se deplace est glacee (et non bloquée)
+        boolean caseGlacee;
+        do {
+            // case courante
+            int[] courante = {this.pj.x, this.pj.y};
+            // calcule case suivante
+            int[] suivante = getSuivant(courante[0], courante[1], action);
+            caseGlacee = this.glace[suivante[0]][suivante[1]];
+
+            if (caisses[suivante[0]][suivante[1]]) {
+                if (caseGlacee){
+                    //Si la case derriere la caisse est bloquée, on ne pourra pas pousser plus la caisse donc on ne glissera plus
+                    caseGlacee = caseDisponible(getSuivant(suivante[0], suivante[1], action)[0], getSuivant(suivante[0], suivante[1], action)[1]);
+                }
+                // on a une caisse
+                deplacerCaisse(suivante[0], suivante[1], action);
+                labyFinis = etreFini();
+
+
+            }
+            // si c'est pas un mur, on effectue le deplacement
+            if (!this.murs[suivante[0]][suivante[1]] && !caisses[suivante[0]][suivante[1]]) {
+                // on met a jour personnage
+                this.pj.x = suivante[0];
+                this.pj.y = suivante[1];
+            }
+
+        } while (caseGlacee);
 
     }
 
@@ -195,16 +217,24 @@ public class Labyrinthe {
      * @param direction Direction du personnage
      */
     public void deplacerCaisse(int x, int y, String direction) {
-
-        // calcule case suivante
         int[] suivante = getSuivant(x, y, direction);
+        int[] precedente = {x,y};
+        boolean caseGlacee;
+        do {
+            // calcule case suivante
 
-        // si c'est pas un mur, on effectue le deplacement
-        if (caseDisponible(suivante[0], suivante[1])) {
-            // on met a jour la caisse
-            this.caisses[x][y] = false;
-            this.caisses[suivante[0]][suivante[1]] = true;
-        }
+            caseGlacee = false;
+
+            // si c'est pas un mur, on effectue le deplacement
+            if (caseDisponible(suivante[0], suivante[1])) {
+                caseGlacee = this.glace[suivante[0]][suivante[1]];
+                // on met a jour la caisse
+                this.caisses[precedente[0]][precedente[1]] = false;
+                this.caisses[suivante[0]][suivante[1]] = true;
+            }
+            precedente = suivante;
+            suivante = getSuivant(suivante[0],suivante[1],direction);
+        } while (caseGlacee);
     }
 
     /**
@@ -281,13 +311,25 @@ public class Labyrinthe {
     }
 
     /**
+     * Getter glace de la position (x,y)
+     * @param x Coordonnee x
+     * @param y Coordonnee y
+     * @return true si la case est glacee
+     */
+    public boolean getGlace(int x, int y) {
+        return this.glace[x][y];
+    }
+
+
+
+    /**
      * Getter emplacementCaisse
      * @return Une liste de tableau de coordonnees qui représente les emplacements de solution des caisses
      */
     public ArrayList<int[]> getEmplacementsCaisse() {
         return emplacementsCaisse;
     }
-    
+
 
     public boolean etreEmplacementCaisse(int x, int y){
         boolean trouve = false;
