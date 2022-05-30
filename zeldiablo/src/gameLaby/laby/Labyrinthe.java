@@ -96,6 +96,7 @@ public class Labyrinthe {
 
         // creation labyrinthe vide
         this.murs = new boolean[nbColonnes][nbLignes];
+        this.caisses = new boolean[nbColonnes][nbLignes];
         this.pj = null;
 
         // lecture des cases
@@ -113,6 +114,11 @@ public class Labyrinthe {
                 switch (c) {
                     case MUR:
                         this.murs[colonne][numeroLigne] = true;
+                        break;
+                    case CAISSE:
+                        this.caisses[colonne][numeroLigne] = true;
+                        break;
+                    case EMPLACEMENT_CAISSE:
                         break;
                     case VIDE:
                         this.murs[colonne][numeroLigne] = false;
@@ -151,19 +157,24 @@ public class Labyrinthe {
 
         // calcule case suivante
         int[] suivante = getSuivant(courante[0], courante[1], action);
-
+        if (caisses[suivante[0]][suivante[1]]) {
+            // on a une caisse
+            deplacerCaisse(suivante[0], suivante[1], action);
+        }
         // si c'est pas un mur, on effectue le deplacement
-        if (!this.murs[suivante[0]][suivante[1]]) {
+        if (!this.murs[suivante[0]][suivante[1]] && !caisses[suivante[0]][suivante[1]]) {
             // on met a jour personnage
             this.pj.x = suivante[0];
             this.pj.y = suivante[1];
         }
+
     }
 
     /**
      * Deplace la caisse en fonction de la direction.
-     * @param x Coordonnee x de la caisse
-     * @param y Coordonnee y de la caisse
+     *
+     * @param x         Coordonnee x de la caisse
+     * @param y         Coordonnee y de la caisse
      * @param direction Direction du personnage
      * @return Si la caisse a ete deplacee
      */
@@ -185,13 +196,14 @@ public class Labyrinthe {
 
     /**
      * Test si la case est disponible
-     * Pour une caisse ou un personnage
+     * Pour une caisse ou un personnage ou un mur
+     *
      * @param x Coordonnee x de la case
      * @param y Coordonnee y de la case
      * @return true si la case est disponible
      */
     public boolean caseDisponible(int x, int y) {
-        return !this.murs[x][y];
+        return !this.murs[x][y] && !this.caisses[x][y];
     }
 
 
@@ -228,6 +240,7 @@ public class Labyrinthe {
 
     /**
      * return mur en (i,j)
+     *
      * @param x
      * @param y
      * @return
@@ -235,5 +248,9 @@ public class Labyrinthe {
     public boolean getMur(int x, int y) {
         // utilise le tableau de boolean
         return this.murs[x][y];
+    }
+
+    public boolean getCaisse(int x, int y) {
+        return this.caisses[x][y];
     }
 }
