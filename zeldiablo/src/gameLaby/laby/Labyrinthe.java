@@ -49,6 +49,10 @@ public class Labyrinthe {
      */
     public ArrayList<int[]> emplacementCaisse;
 
+    /**
+     * Boolean permettant de savoir si le labyrinthe est finis ou non
+     */
+    public boolean labyFinis = false;
 
     /**
      * retourne la case suivante selon une actions
@@ -174,9 +178,7 @@ public class Labyrinthe {
         if (caisses[suivante[0]][suivante[1]]) {
             // on a une caisse
             deplacerCaisse(suivante[0], suivante[1], action);
-            if(etreFini()){
-                System.out.println("Bravo, vous avez finis");
-            }
+            labyFinis = etreFini();
         }
         // si c'est pas un mur, on effectue le deplacement
         if (!this.murs[suivante[0]][suivante[1]] && !caisses[suivante[0]][suivante[1]]) {
@@ -286,5 +288,7 @@ public class Labyrinthe {
         return this.emplacementCaisse.contains(new int[]{i,y});
     }
 
-
+    public boolean isLabyFinis() {
+        return labyFinis;
+    }
 }
