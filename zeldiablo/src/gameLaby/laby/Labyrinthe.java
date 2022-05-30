@@ -277,8 +277,13 @@ public class Labyrinthe {
         return this.caisses[x][y];
     }
 
+    public ArrayList<int[]> getEmplacementCaisse() {
+        return emplacementCaisse;
+    }
+
     public boolean contientCaisse(int i, int y) {
         return this.emplacementCaisse.contains(new int[]{i,y});
     }
+
 
 }

@@ -10,6 +10,8 @@ import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
 import moteurJeu.MoteurJeu;
 
+import java.util.ArrayList;
+
 import static gameLaby.laby.Labyrinthe.MUR;
 
 public class LabyDessin implements DessinJeu {
@@ -34,6 +36,12 @@ public class LabyDessin implements DessinJeu {
                     gc.fillRect(i*60, j*60,60, 60);
                 }
             }
+        }
+
+        ArrayList<int[]> emplacementCaisse = labyJeu.getLaby().getEmplacementCaisse();
+        for (int i = 0; i < emplacementCaisse.size(); i++) {
+            gc.setFill(Color.RED);
+            gc.fillOval(emplacementCaisse.get(i)[0]*60, emplacementCaisse.get(i)[1]*60,30,30);
         }
 
         Perso perso =  labyJeu.getLaby().pj;
