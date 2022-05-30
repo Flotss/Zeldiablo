@@ -29,6 +29,10 @@ public class LabyDessin implements DessinJeu {
                     gc.setFill(Color.BLACK);
                     gc.fillRect(i*60, j*60,60, 60);
                 }
+                if(labyJeu.getLaby().getCaisse(i,j)){
+                    gc.setFill(Color.BROWN);
+                    gc.fillRect(i*60, j*60,60, 60);
+                }
             }
         }
 

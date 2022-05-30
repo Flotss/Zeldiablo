@@ -9,7 +9,7 @@ public class MainLaby {
     int pFPS = 20;
 
     // creation des objets
-    LabyJeu jeuLab = new LabyJeu("labySimple/laby2.txt");
+    LabyJeu jeuLab = new LabyJeu("labySimple/labySokoban.txt");
     int width = jeuLab.getLaby().getLength()*60;
     int height = jeuLab.getLaby().getLengthY()*60;
     LabyDessin dessinLab = new LabyDessin();
