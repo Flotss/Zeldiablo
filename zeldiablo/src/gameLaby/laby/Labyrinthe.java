@@ -172,6 +172,9 @@ public class Labyrinthe {
         if (caisses[suivante[0]][suivante[1]]) {
             // on a une caisse
             deplacerCaisse(suivante[0], suivante[1], action);
+            if(etreFini()){
+                System.out.println("Bravo, vous avez finis");
+            }
         }
         // si c'est pas un mur, on effectue le deplacement
         if (!this.murs[suivante[0]][suivante[1]] && !caisses[suivante[0]][suivante[1]]) {
