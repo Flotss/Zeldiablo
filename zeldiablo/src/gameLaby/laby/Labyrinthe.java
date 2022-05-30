@@ -287,9 +287,18 @@ public class Labyrinthe {
     public ArrayList<int[]> getEmplacementsCaisse() {
         return emplacementsCaisse;
     }
+    
 
-    public boolean contientCaisse(int x, int y) {
-        return this.emplacementsCaisse.stream().anyMatch(e -> e[0] == x && e[1] == y);
+    public boolean etreEmplacementCaisse(int x, int y){
+        boolean trouve = false;
+        for (int[] emplacement : emplacementsCaisse) {
+            if (emplacement[0]==x && emplacement[1] == y) {
+                trouve = true;
+                break;
+            }
+
+        }
+        return trouve;
     }
 
     public boolean isLabyFinis() {
