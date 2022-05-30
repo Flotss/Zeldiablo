@@ -22,3 +22,6 @@
 .idea
 *.iml
 *.db
+
+# Dossier inutiles
+out

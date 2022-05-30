@@ -47,7 +47,7 @@ public class Labyrinthe {
     /**
      * les emplacements pour les caisses du labyrinthe
      */
-    public ArrayList<int[]> emplacementCaisse;
+    public ArrayList<int[]> emplacementsCaisse;
 
     /**
      * Boolean permettant de savoir si le labyrinthe est finis ou non
@@ -83,8 +83,7 @@ public class Labyrinthe {
             default:
                 throw new Error("action inconnue");
         }
-        int[] res = {x, y};
-        return res;
+        return new int[]{x, y};
     }
 
 
@@ -93,7 +92,6 @@ public class Labyrinthe {
      * charge le labyrinthe
      *
      * @param nom nom du fichier de labyrinthe
-     * @return labyrinthe cree
      * @throws IOException probleme a la lecture / ouverture
      */
     public Labyrinthe(String nom) throws IOException {
@@ -119,7 +117,7 @@ public class Labyrinthe {
         int numeroLigne = 0;
 
         //initialisation de l'arraylist emplacement caisse
-        this.emplacementCaisse = new ArrayList<>();
+        this.emplacementsCaisse = new ArrayList<>();
 
         // parcours le fichier
         while (ligne != null) {
@@ -135,7 +133,7 @@ public class Labyrinthe {
                         this.caisses[colonne][numeroLigne] = true;
                         break;
                     case EMPLACEMENT_CAISSE:
-                        this.emplacementCaisse.add(new int[]{colonne, numeroLigne});
+                        this.emplacementsCaisse.add(new int[]{colonne, numeroLigne});
                         break;
                     case VIDE:
                         this.murs[colonne][numeroLigne] = false;
@@ -195,9 +193,8 @@ public class Labyrinthe {
      * @param x         Coordonnee x de la caisse
      * @param y         Coordonnee y de la caisse
      * @param direction Direction du personnage
-     * @return Si la caisse a ete deplacee
      */
-    public boolean deplacerCaisse(int x, int y, String direction) {
+    public void deplacerCaisse(int x, int y, String direction) {
 
         // calcule case suivante
         int[] suivante = getSuivant(x, y, direction);
@@ -207,10 +204,7 @@ public class Labyrinthe {
             // on met a jour la caisse
             this.caisses[x][y] = false;
             this.caisses[suivante[0]][suivante[1]] = true;
-            // on renvoie true si la caisse a ete deplacee
-            return true;
         }
-        return false;
     }
 
     /**
@@ -232,8 +226,8 @@ public class Labyrinthe {
      */
     public boolean etreFini() {
         boolean finis = true;
-        for (int i = 0; i < emplacementCaisse.size(); i++) {
-            if(!this.caisses[emplacementCaisse.get(i)[0]][emplacementCaisse.get(i)[1]]){
+        for (int[] emplacement : emplacementsCaisse) {
+            if (!this.caisses[emplacement[0]][emplacement[1]]) {
                 finis = false;
                 break;
             }
@@ -247,28 +241,28 @@ public class Labyrinthe {
     // ##################################
 
     /**
-     * return taille selon Y
+     * Getter Taille du labyrinthe verticale
      *
-     * @return
+     * @return taille en vertical
      */
     public int getLengthY() {
         return murs[0].length;
     }
 
     /**
-     * return taille selon X
+     * Getter Taille du labyrinthe horizontal
      *
-     * @return
+     * @return taille en horizontal
      */
     public int getLength() {
         return murs.length;
     }
 
     /**
-     * return mur en (i,j)
+     * Getter mur de la position (x,y)
      *
-     * @param x
-     * @param y
+     * @param x Coordonnee x
+     * @param y Coordonnee y
      * @return boolean de la position
      */
     public boolean getMur(int x, int y) {
@@ -276,16 +270,26 @@ public class Labyrinthe {
         return this.murs[x][y];
     }
 
+    /**
+     * Getter Caisse de la position (x,y)
+     * @param x Coordonnee x
+     * @param y Coordonnee y
+     * @return true si la case est une caisse
+     */
     public boolean getCaisse(int x, int y) {
         return this.caisses[x][y];
     }
 
-    public ArrayList<int[]> getEmplacementCaisse() {
-        return emplacementCaisse;
+    /**
+     * Getter emplacementCaisse
+     * @return Une liste de tableau de coordonnees qui représente les emplacements de solution des caisses
+     */
+    public ArrayList<int[]> getEmplacementsCaisse() {
+        return emplacementsCaisse;
     }
 
-    public boolean contientCaisse(int i, int y) {
-        return this.emplacementCaisse.contains(new int[]{i,y});
+    public boolean contientCaisse(int x, int y) {
+        return this.emplacementsCaisse.stream().anyMatch(e -> e[0] == x && e[1] == y);
     }
 
     public boolean isLabyFinis() {

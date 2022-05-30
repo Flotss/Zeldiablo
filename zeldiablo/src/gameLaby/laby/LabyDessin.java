@@ -1,8 +1,5 @@
 package gameLaby.laby;
 
-import gameArkanoid.ArkanoidJeu;
-import gameArkanoid.Balle;
-import gameArkanoid.Raquette;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -11,11 +8,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
-import moteurJeu.MoteurJeu;
 
 import java.util.ArrayList;
-
-import static gameLaby.laby.Labyrinthe.MUR;
 
 public class LabyDessin implements DessinJeu {
 
@@ -31,11 +25,11 @@ public class LabyDessin implements DessinJeu {
             gc.setFill(Color.LIGHTGRAY);
             gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-            ArrayList<int[]> emplacementCaisse = labyJeu.getLaby().getEmplacementCaisse();
-            for (int i = 0; i < emplacementCaisse.size(); i++) {
-                gc.setFill(Color.PINK);
-                gc.fillOval(emplacementCaisse.get(i)[0] * 60 + 15, emplacementCaisse.get(i)[1] * 60 + 15, 30, 30);
-            }
+    ArrayList<int[]> emplacementCaisse = labyJeu.getLaby().getEmplacementsCaisse();
+        for (int i = 0; i < emplacementCaisse.size(); i++) {
+            gc.setFill(Color.PINK);
+            gc.fillOval(emplacementCaisse.get(i)[0]*60+15, emplacementCaisse.get(i)[1]*60+15,30,30);
+        }
 
             for (int i = 0; i < labyJeu.getLaby().murs.length; i++) {
                 for (int j = 0; j < labyJeu.getLaby().murs[i].length; j++) {
