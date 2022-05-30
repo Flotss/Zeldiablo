@@ -3,6 +3,7 @@ package gameLaby.laby;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * classe labyrinthe. represente un labyrinthe avec
@@ -42,6 +43,12 @@ public class Labyrinthe {
      * les caisses du labyrinthe
      */
     public boolean[][] caisses;
+
+    /**
+     * les emplacements pour les caisses du labyrinthe
+     */
+    public ArrayList<int[]> emplacementCaisse;
+
 
     /**
      * retourne la case suivante selon une actions
@@ -105,6 +112,9 @@ public class Labyrinthe {
         // stocke les indices courants
         int numeroLigne = 0;
 
+        //initialisation de l'arraylist emplacement caisse
+        this.emplacementCaisse = new ArrayList<>();
+
         // parcours le fichier
         while (ligne != null) {
 
@@ -119,6 +129,7 @@ public class Labyrinthe {
                         this.caisses[colonne][numeroLigne] = true;
                         break;
                     case EMPLACEMENT_CAISSE:
+                        this.emplacementCaisse.add(new int[]{colonne, numeroLigne});
                         break;
                     case VIDE:
                         this.murs[colonne][numeroLigne] = false;
@@ -129,6 +140,7 @@ public class Labyrinthe {
                         // ajoute PJ
                         this.pj = new Perso(colonne, numeroLigne);
                         break;
+
 
                     default:
                         throw new Error("caractere inconnu " + c);
@@ -208,12 +220,18 @@ public class Labyrinthe {
 
 
     /**
-     * jamais fini
-     *
      * @return fin du jeu
      */
     public boolean etreFini() {
-        return false;
+        boolean finis = true;
+        for (int i = 0; i < emplacementCaisse.size(); i++) {
+            if(!this.caisses[emplacementCaisse.get(i)[0]][emplacementCaisse.get(i)[1]]){
+                finis = false;
+                break;
+            }
+
+        }
+        return finis;
     }
 
     // ##################################
