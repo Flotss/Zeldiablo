@@ -37,6 +37,11 @@ public class Labyrinthe {
     public boolean[][] murs;
 
     /**
+     * les caisses du labyrinthe
+     */
+    public boolean[][] caisse;
+
+    /**
      * retourne la case suivante selon une actions
      *
      * @param x      case depart
@@ -151,6 +156,28 @@ public class Labyrinthe {
             this.pj.x = suivante[0];
             this.pj.y = suivante[1];
         }
+    }
+
+    /**
+     * Deplace la caisse en fonction de la direction.
+     * @param x Coordonnee x de la caisse
+     * @param y Coordonnee y de la caisse
+     * @param direction Direction du personnage
+     * @return Si la caisse a ete deplacee
+     */
+    public boolean deplacerCaise(int x, int y, String direction) {
+        throw new Error();
+    }
+
+    /**
+     * Test si la case est disponible
+     * Pour une caisse ou un personnage
+     * @param x Coordonnee x de la case
+     * @param y Coordonnee y de la case
+     * @return true si la case est disponible
+     */
+    public boolean caseDisponible(int x, int y) {
+        throw new Error();
     }
 
 
