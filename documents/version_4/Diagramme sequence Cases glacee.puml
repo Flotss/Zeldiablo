@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+create LabyJeu
+create Labyrinthe
+
+
+activate LabyJeu
+
+LabyJeu -> Labyrinthe : deplacerPerso()
+activate Labyrinthe
+loop caseGlacee == true
+    Labyrinthe -> Labyrinthe : caseDisponible(x,y)
+    Labyrinthe -> Labyrinthe : deplacerCaisse(x,y,direction)
+    Labyrinthe -> Labyrinthe : etreFinis()
+end
+Labyrinthe --> LabyJeu :
+deactivate Labyrinthe
+deactivate LabyJeu
+
+
+
+@enduml

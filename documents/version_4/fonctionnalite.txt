@@ -1,11 +1,13 @@
 1. Sol verglacé (10.3)
 - Descriptif :
   - des cases du labyrinthe sont recouvertes de glace
-  - si un mur est déplacé sur ces cases, ce dernier continue son déplacement jusqu'à atteindre une case non glacé
+  - si un mur ou le personnage est déplacé sur ces cases, ce dernier continue son déplacement jusqu'à atteindre une case non glacé
 - Critères de validation :
   - Les containers se comportent comme des murs déplacables.
-  - Quand il glisse, un mur déplaçable s'arrete dés qu'il arrive sur une case normale.
-  - Quand il glisse, un mur déplaçable s'arrete dés qu'il rencontre un obstacle.
+  - Quand il glisse, un mur déplaçable s'arrête dès qu'il arrive sur une case normale.
+  - Quand il glisse, un mur déplaçable s'arrête dès qu'il rencontre un obstacle.
+- Remarque :
+  - Il faut faire attention au cas où l'on pousse le mur sur une case glacée et un mur derriere
 
 2. Propulsion de mur déplaçable (10.4)
 - Descriptif :
