@@ -11,6 +11,12 @@ Critère :
   - Le mur doit être affiché à sa position
   - Le mur sera représenter par un carré de la couleur marron
 
+Résultat : 
+- La fonctionnalité a été ajouté avec succès 
+- Le mur se déplace correctement lorsque le personnage le touche
+- Le mur est bien affiché à sa position par un carré de la couleur marron
+
+
 
 2. Probleme de Sokoban (10.2) : BERNARD Julien et SIMONIN Enzo
 Descriptif : 
