@@ -83,6 +83,8 @@ public class Labyrinthe {
         return res;
     }
 
+
+
     /**
      * charge le labyrinthe
      *
@@ -276,7 +278,7 @@ public class Labyrinthe {
     }
 
     public boolean contientCaisse(int i, int y) {
-        return this.emplacementCaisse.contains([i,y]);
+        return this.emplacementCaisse.contains(new int[]{i,y});
     }
 
 }
