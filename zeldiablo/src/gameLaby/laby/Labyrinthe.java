@@ -225,7 +225,8 @@ public class Labyrinthe {
 
 
     /**
-     * @return fin du jeu
+     * Methode qui renvoie si le jeu est fini
+     * @return vrai si toutes les caisses sont sur les emplacements de caisse
      */
     public boolean etreFini() {
         boolean finis = true;
@@ -266,7 +267,7 @@ public class Labyrinthe {
      *
      * @param x
      * @param y
-     * @return
+     * @return boolean de la position
      */
     public boolean getMur(int x, int y) {
         // utilise le tableau de boolean

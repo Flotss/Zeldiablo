@@ -1,3 +1,4 @@
+import gameLaby.laby.Labyrinthe;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -54,7 +55,7 @@ public class TestLabyrinthe {
     }
 
   @Test
-  public void emplacementSortieCaisse(){
+  public void emplacementSortieCaisse() throws IOException {
     // Initialisation
     Labyrinthe laby = new Labyrinthe("labySimple/labySokoban.txt");
 
