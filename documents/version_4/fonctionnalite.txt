@@ -1,4 +1,4 @@
-1. Sol verglacé (10.3)
+1. Sol verglacé (10.3) : Bernard Julien
 - Descriptif :
   - des cases du labyrinthe sont recouvertes de glace
   - si un mur ou le personnage est déplacé sur ces cases, ce dernier continue son déplacement jusqu'à atteindre une case non glacé
