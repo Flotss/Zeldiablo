@@ -1,7 +1,10 @@
 
+import gameLaby.laby.Labyrinthe;
 import org.junit.jupiter.api.Test;
 
-import static org.testng.AssertJUnit.*;
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class TestLabyrinthe {
@@ -26,7 +29,18 @@ public class TestLabyrinthe {
   }
 
   @Test
-  public void deplacerCaisse() {
+  public void deplacerCaisse() throws IOException {
+    // Initialisation
+    Labyrinthe laby = new Labyrinthe("labySimple/labySokoban.txt");
+
+    //Verification de la position de la caisse
+    assertTrue(laby.getCaisse(17,10));
+
+    //Deplacement de la caisse avec la methode
+    laby.deplacerCaisse(17,10,Labyrinthe.HAUT);
+
+    //Verification de la position de la caisse
+    assertTrue(laby.getCaisse(17,9));
 
   }
 
