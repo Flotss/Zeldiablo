@@ -17,14 +17,14 @@ class Positions{
     + etrePresent(int x, int y): boolean
 }
 
-class Caisse {
-    + Caisse()
-    + deplacerCaisse(int x, int y, String direction)
+class Caisses {
+    + Caisses(int x, int y)
+    + deplacerCaisses(int x, int y, String direction): boolean
 }
 
-class EmplacementCaisse {
-    + EmplacementCaisse()
-    + etreFini(Caisse c): boolean
+class EmplacementCaisses {
+    + EmplacementCaisses(int x, int y)
+    + etreFini(Caisses c): boolean
 }
 
 class Perso {
@@ -35,12 +35,12 @@ class Perso {
     + getX() : int
     + getY() : int
 }
-Labyrinthe "*" <-- "1" Perso : - pj
+Labyrinthe "*" --> "1" Perso : - pj
 
-Labyrinthe "*" <-- "1" Caisse : - caisses
+Labyrinthe "*" --> "1" Caisses : - caisses
 
-Labyrinthe "*" <-- "1" EmplacementCaisse : - emplacementCaisses
+Labyrinthe "*" --> "1" EmplacementCaisses : - emplacementCaisses
 
-Positions <|-- Caisse
-Positions <|-- EmplacementCaisse
+Positions <|-- Caisses
+Positions <|-- EmplacementCaisses
 @enduml
