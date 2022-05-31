@@ -18,23 +18,27 @@ activate l
 l -> c : new (int x, int y)
 activate c
 l <-- c
+deactivate c
 l -> ep : new (int x, int y)
 activate ep
 l <-- ep
+deactivate ep
 
 l -> ep : ajouter(x,y)
+activate ep
 l <-- ep
+deactivate ep
+
 l -> c : ajouter(x,y)
+activate c
 l <-- c
+deactivate c
 l -> p : new(x,y)
 activate p
 l <-- p
 deactivate p
-deactivate c
-deactivate ep
 m <-- l
 deactivate l
-deactivate m
 
 
 

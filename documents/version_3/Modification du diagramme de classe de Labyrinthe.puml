@@ -10,7 +10,7 @@ class Labyrinthe{
     + getMur(x : int, y : int) : boolean
 }
 
-class Positions{
+class Cases{
     - pos: boolean[][]
     + Positions(int x, int y)
     + ajouter(int x, int y)
@@ -41,6 +41,6 @@ Labyrinthe "*" --> "1" Caisses : - caisses
 
 Labyrinthe "*" --> "1" EmplacementCaisses : - emplacementCaisses
 
-Positions <|-- Caisses
-Positions <|-- EmplacementCaisses
+Cases <|-- Caisses
+Cases <|-- EmplacementCaisses
 @enduml

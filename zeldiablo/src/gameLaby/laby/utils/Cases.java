@@ -1,6 +1,6 @@
 package gameLaby.laby.utils;
 
-public class Position {
+public class Cases {
   /**
    * Attributs de la coordonnée
    */
@@ -8,12 +8,12 @@ public class Position {
 
 
   /**
-   * Constructeur de la classe Position
+   * Constructeur de la classe Cases
    *
    * @param x coordonnée x
    * @param y coordonnée y
    */
-  public Position(int x, int y) {
+  public Cases(int x, int y) {
     this.pos = new boolean[x][y];
   }
 

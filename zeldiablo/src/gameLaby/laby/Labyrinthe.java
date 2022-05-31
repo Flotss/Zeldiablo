@@ -9,6 +9,8 @@ import java.util.ArrayList;
  * classe labyrinthe. represente un labyrinthe avec
  * <ul> des murs </ul>
  * <ul> un personnage (x,y) </ul>
+ * <ul> des caisses </ul>
+ * <ul> des arrivés </ul>
  */
 public class Labyrinthe {
 

@@ -1,11 +1,11 @@
 package gameLaby.laby;
 
-import gameLaby.laby.utils.Position;
+import gameLaby.laby.utils.Cases;
 
-public class Caisses extends Position {
+public class Caisses extends Cases {
 
   /**
-   * Constructeur de la classe Position
+   * Constructeur de la classe Cases
    *
    * @param x coordonnée x
    * @param y coordonnée y
