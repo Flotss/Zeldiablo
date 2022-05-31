@@ -23,15 +23,15 @@ deactivate c
 alt presence
     l -> c : deplacerCaisse(int x, int y, String direction)
     activate c
-    l <-- c : reussi: boolean
+    l <-- c
     deactivate c
-        alt reussi
-            l -> p : deplacerPerso(String action))
-            activate p
-            l <-- p
-            deactivate p
-        end
-else
+end
+l -> c : etrePresent(x,y)
+activate c
+l <-- c : presence: boolean
+deactivate c
+
+alt !presence && !murs[x][y]
 
     l -> p : deplacerPerso(String action))
     activate p

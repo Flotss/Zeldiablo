@@ -9,36 +9,47 @@ participant "emplacementCaisses : EmplacementCaisses" as ep
 
 autonumber
 
-
-
+lj -> l : deplacerPerso(String action)
 activate lj
 activate l
-lj -> l : deplacerPerso(String action)
-
 l -> l : getSuivant()
 l -> c : etrePresent(x,y)
+activate c
 l <-- c : presence: boolean
+deactivate c
+
 alt presence
     l -> c : deplacerCaisse(int x, int y, String direction)
-    l <-- c : reussi: boolean
-        alt reussi
-            l -> p : deplacerPerso(String action))
-            l <-- p
-            l -> ec : etreFini(Caisse caisses)
-            loop
-            ec -> c : etrePresent(int x, int y)
-            ec <-- c : presence : true
-            end
-            l <-- ec : finis : boolean
-        end
-else
+    activate c
+    l <-- c
+    deactivate c
+     l -> ep : etreFini(Caisse caisses)
+     activate ep
+     loop
+     ep -> c : etrePresent(int x, int y)
+     activate c
+     ep <-- c : presence : true
+     deactivate c
+     end
+     l <-- ep : finis : boolean
+     deactivate ep
+end
+l -> c : etrePresent(x,y)
+activate c
+l <-- c : presence: boolean
+deactivate c
+
+alt !presence && !murs[x][y]
+
     l -> p : deplacerPerso(String action))
+    activate p
     l <-- p
+    deactivate p
 end
 
 lj <-- l
-deactivate Labyrinthe
-deactivate LabyJeu
+deactivate l
+
 
 
 
