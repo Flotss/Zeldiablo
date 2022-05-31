@@ -1,20 +1,35 @@
 @startuml
-'https://plantuml.com/class-diagram
 
 class Labyrinthe{
     + pj : Perso
     + murs : boolean[][]
     + caisses : boolean[][]
     + emplacementCaisse ArrayList<int[]>
-    + labyFinis : boolean
     + getSuivant(pj : Perso) : int[]
-    + deplacerPerso(pj : Perso, direction : int)
-    + etreFini() : Boolean
-    + getMur(x : int, y : int) : boolean
+    + deplacerPerso(pj : Perso, direction : String)
+    + etreFini() : boolean
     + deplacerCaisse(x : int, y : int, direction : String) : boolean
     + caseDisponible(x : int, y : int) : boolean
+    + getLength() : int
+    + getLengthY() : int
+    + getMur(x : int, y : int) : boolean
+    + getCaisse(x : int, y : int) : int[]
+    + getEmplacementsCaisse() : boolean
 }
 
+class Caisse {
+}
+
+class Perso {
+    + x : int
+    + y : int
+    + Perso(dx: int, int dy)
+    + etrePresent(dx : int, dy : int) : boolean
+    + getX() : int
+    + getY() : int
+}
+
+Perso <-- Caisse
 
 
 @enduml

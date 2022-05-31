@@ -50,10 +50,6 @@ public class Labyrinthe {
      */
     public ArrayList<int[]> emplacementsCaisse;
 
-    /**
-     * Boolean permettant de savoir si le labyrinthe est finis ou non
-     */
-    public boolean labyFinis = false;
 
     /**
      * les cases glacée du labyrinthe
@@ -128,7 +124,6 @@ public class Labyrinthe {
 
         // parcours le fichier
         while (ligne != null) {
-
             // parcours de la ligne
             for (int colonne = 0; colonne < ligne.length(); colonne++) {
                 char c = ligne.charAt(colonne);
@@ -153,18 +148,14 @@ public class Labyrinthe {
                     case glacee:
                         this.glace[colonne][numeroLigne] = true;
                         break;
-
-
                     default:
                         throw new Error("caractere inconnu " + c);
                 }
             }
-
             // lecture
             ligne = bfRead.readLine();
             numeroLigne++;
         }
-
         // ferme fichier
         bfRead.close();
     }
@@ -177,7 +168,6 @@ public class Labyrinthe {
      * @param action une des actions possibles
      */
     public void deplacerPerso(String action) {
-
         //On repete le deplacement tant que la case sur laquelle le personnage se deplace est glacee (et non bloquée)
         boolean caseGlacee;
         do {
@@ -194,9 +184,6 @@ public class Labyrinthe {
                 }
                 // on a une caisse
                 deplacerCaisse(suivante[0], suivante[1], action);
-                labyFinis = etreFini();
-
-
             }
             // si c'est pas un mur, on effectue le deplacement
             if (!this.murs[suivante[0]][suivante[1]] && !caisses[suivante[0]][suivante[1]]) {
@@ -204,7 +191,6 @@ public class Labyrinthe {
                 this.pj.x = suivante[0];
                 this.pj.y = suivante[1];
             }
-
         } while (caseGlacee);
 
     }
@@ -222,7 +208,6 @@ public class Labyrinthe {
         boolean caseGlacee;
         do {
             // calcule case suivante
-
             caseGlacee = false;
 
             // si c'est pas un mur, on effectue le deplacement
@@ -261,9 +246,26 @@ public class Labyrinthe {
                 finis = false;
                 break;
             }
-
         }
         return finis;
+    }
+
+
+    /**
+     * La case est un emplacement de  caisse ou non
+     * @param x Coordonnee x de la caisse
+     * @param y Coordonnee y de la caisse
+     * @return true si la case est un emplacement de caisse sinon false
+     */
+    public boolean etreEmplacementCaisse(int x, int y){
+        boolean trouve = false;
+        for (int[] emplacement : emplacementsCaisse) {
+            if (emplacement[0]==x && emplacement[1] == y) {
+                trouve = true;
+                break;
+            }
+        }
+        return trouve;
     }
 
     // ##################################
@@ -321,29 +323,11 @@ public class Labyrinthe {
     }
 
 
-
     /**
      * Getter emplacementCaisse
      * @return Une liste de tableau de coordonnees qui représente les emplacements de solution des caisses
      */
     public ArrayList<int[]> getEmplacementsCaisse() {
         return emplacementsCaisse;
-    }
-
-
-    public boolean etreEmplacementCaisse(int x, int y){
-        boolean trouve = false;
-        for (int[] emplacement : emplacementsCaisse) {
-            if (emplacement[0]==x && emplacement[1] == y) {
-                trouve = true;
-                break;
-            }
-
-        }
-        return trouve;
-    }
-
-    public boolean isLabyFinis() {
-        return labyFinis;
     }
 }

@@ -25,12 +25,11 @@ public class LabyDessin implements DessinJeu {
             gc.setFill(Color.LIGHTGRAY);
             gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-    ArrayList<int[]> emplacementCaisse = labyJeu.getLaby().getEmplacementsCaisse();
+        ArrayList<int[]> emplacementCaisse = labyJeu.getLaby().getEmplacementsCaisse();
         for (int i = 0; i < emplacementCaisse.size(); i++) {
             gc.setFill(Color.PINK);
             gc.fillOval(emplacementCaisse.get(i)[0]*60+15, emplacementCaisse.get(i)[1]*60+15,30,30);
         }
-
             for (int i = 0; i < labyJeu.getLaby().murs.length; i++) {
                 for (int j = 0; j < labyJeu.getLaby().murs[i].length; j++) {
                     if(labyJeu.getLaby().getGlace(i,j)){
@@ -48,13 +47,12 @@ public class LabyDessin implements DessinJeu {
                 }
             }
 
-
             Perso perso = labyJeu.getLaby().pj;
 
             gc.setFill(Color.RED);
             gc.fillOval(perso.x * 60, perso.y * 60, 60, 60);
         }
-        if(labyJeu.getLaby().isLabyFinis()){
+        if(labyJeu.getLaby().etreFini()){
             dernierUpdateFait = true;
             gc.setFill(Color.GRAY);
             gc.fillRect(canvas.getWidth()/2-150,canvas.getHeight()/2-60,300,120);
