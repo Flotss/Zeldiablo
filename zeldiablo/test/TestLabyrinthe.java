@@ -69,12 +69,12 @@ public class TestLabyrinthe {
 
       //Verification de la position des sorties
 
-      assertTrue(laby.etreEmplacementCaisse(6,1),"les coordonnes 6/1 devraient etre un emplacement de caisse");
-      assertTrue(laby.etreEmplacementCaisse(17,1),"les coordonnes 17/1 devraient etre un emplacement de caisse");
-      assertTrue(laby.etreEmplacementCaisse(13,4),"les coordonnes 13/4 devraient etre un emplacement de caisse");
-      assertTrue(laby.etreEmplacementCaisse(18,5),"les coordonnes 18/5 devraient etre un emplacement de caisse");
-      assertTrue(laby.etreEmplacementCaisse(4,7),"les coordonnes 4/7 devraient etre un emplacement de caisse");
-      assertTrue(laby.etreEmplacementCaisse(10,9),"les coordonnes 10/9 devraient etre un emplacement de caisse");
+      assertTrue(laby.getEmplacementsCaisse().pos[6][1],"les coordonnes 6/1 devraient etre un emplacement de caisse");
+      assertTrue(laby.getEmplacementsCaisse().pos[17][1],"les coordonnes 17/1 devraient etre un emplacement de caisse");
+      assertTrue(laby.getEmplacementsCaisse().pos[13][4],"les coordonnes 13/4 devraient etre un emplacement de caisse");
+      assertTrue(laby.getEmplacementsCaisse().pos[18][5],"les coordonnes 18/5 devraient etre un emplacement de caisse");
+      assertTrue(laby.getEmplacementsCaisse().pos[4][7],"les coordonnes 4/7 devraient etre un emplacement de caisse");
+      assertTrue(laby.getEmplacementsCaisse().pos[10][9],"les coordonnes 10/9 devraient etre un emplacement de caisse");
 
   }
 
