@@ -1,7 +1,7 @@
 @startuml
 
 class Labyrinthe{
-    + murs : boolean[][]
+    - murs : boolean[][]
     + getSuivant(int x, int y, String action) : int[]
     + deplacerPerso(pj : Perso, direction : String)
     + caseDisponible(x : int, y : int) : boolean
