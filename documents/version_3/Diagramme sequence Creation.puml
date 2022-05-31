@@ -15,10 +15,10 @@ activate m
 m -> l : new()
 activate l
 
-l -> c : new
+l -> c : new (int x, int y)
 activate c
 l <-- c
-l -> ep : new
+l -> ep : new (int x, int y)
 activate ep
 l <-- ep
 
