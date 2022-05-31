@@ -17,9 +17,10 @@ public class Caisses extends Cases {
   /**
    * Deplace la caisse en fonction de la direction.
    *
-   * @param x         Coordonnee x de la caisse
-   * @param y         Coordonnee y de la caisse
-   * @return true si la caisse a pu se deplacer, false sinon
+   * @param x  Coordonnee x de la caisse ancienne position
+   * @param y  Coordonnee y de la caisse ancienne position
+   * @param dx Coordonnee x de la caisse nouvelle position
+   * @param dy Coordonnee y de la caisse nouvelle position
    */
   public void deplacer(int x, int y, int dx, int dy) {
     this.getPos()[x][y] = false;
