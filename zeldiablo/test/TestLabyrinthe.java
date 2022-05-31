@@ -58,7 +58,7 @@ public class TestLabyrinthe {
       for (int i = 0; i< 2; i++) laby.deplacerPerso("Haut");
 
       //Verification
-      assertTrue(laby.pj.etrePresent(17,10));
+      assertTrue(laby.getPj().etrePresent(17,10));
       assertTrue(laby.getCaisse(17,9));
     }
 

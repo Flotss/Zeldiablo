@@ -3,7 +3,6 @@ package gameLaby.laby;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * classe labyrinthe. represente un labyrinthe avec
@@ -35,28 +34,28 @@ public class Labyrinthe {
     /**
      * attribut du personnage
      */
-    public Perso pj;
+    private Perso pj;
 
     /**
      * les murs du labyrinthe
      */
-    public boolean[][] murs;
+    private boolean[][] murs;
 
     /**
      * les caisses du labyrinthe
      */
-    public Caisses caisses;
+    private Caisses caisses;
 
     /**
      * les emplacements pour les caisses du labyrinthe
      */
-    public EmplacementsCaisse emplacementsCaisse;
+    private EmplacementsCaisse emplacementsCaisse;
 
 
     /**
      * les cases glacée du labyrinthe
      */
-    public boolean[][] glace;
+    private boolean[][] glace;
 
     /**
      * retourne la case suivante selon une actions
@@ -303,5 +302,21 @@ public class Labyrinthe {
      */
     public EmplacementsCaisse getEmplacementsCaisse() {
         return emplacementsCaisse;
+    }
+
+    /**
+     * Getter caisses
+     * @return caisses
+     */
+    public Perso getPj() {
+        return pj;
+    }
+
+    /**
+     * Getter des murs
+     * @return Les murs du labyrinthe
+     */
+    public boolean[][] getMurs() {
+        return murs;
     }
 }
