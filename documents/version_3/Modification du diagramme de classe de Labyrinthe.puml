@@ -2,20 +2,27 @@
 
 class Labyrinthe{
     - murs : boolean[][]
+    + Labyrinthe(nom : String)
     + getSuivant(x : int, y : int, action : String) : int[]
     + deplacerPerso(pj : Perso, direction : String)
     + deplacerCaisses(x : int, y : int, direction : String)
     + caseDisponible(x : int, y : int) : boolean
+    + etreFini() : boolean
     + getLength() : int
     + getLengthY() : int
     + getMur(x : int, y : int) : boolean
+    + getMurs() : boolean[][]
+    + getCaisses(x : int, y : int) : boolean
+    + getEmplacementsCaisse() : EmplacementsCaisse
+    + getPj() : Perso
 }
 
 class Cases{
     - pos: boolean[][]
-    + Positions(int : x, int : y)
+    + Cases(int : x, int : y)
     + ajouter(int : x, int : y)
     + etrePresent(int : x, int : y): boolean
+    + getPos() : int
 }
 
 class Caisses {
@@ -23,14 +30,14 @@ class Caisses {
     + deplacer(x : int, y : int, dx : int, dy : int): boolean
 }
 
-class EmplacementCaisses {
+class EmplacementsCaisse {
     + EmplacementCaisses(int x, int y)
     + etreFini(c : Caisses): boolean
 }
 
 class Perso {
-    + x : int
-    + y : int
+    - x : int
+    - y : int
     + Perso(dx : int, dy : int)
     + etrePresent(dx : int, dy : int) : boolean
     + getX() : int
@@ -40,8 +47,8 @@ Labyrinthe "*" --> "1" Perso : - pj
 
 Labyrinthe "*" --> "1" Caisses : - caisses
 
-Labyrinthe "*" --> "1" EmplacementCaisses : - emplacementCaisses
+Labyrinthe "*" --> "1" EmplacementsCaisse : - emplacementsCaisse
 
 Cases <|-- Caisses
-Cases <|-- EmplacementCaisses
+Cases <|-- EmplacementsCaisse
 @enduml
