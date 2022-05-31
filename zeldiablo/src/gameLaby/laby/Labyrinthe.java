@@ -230,7 +230,7 @@ public class Labyrinthe {
      * @return true si la case est disponible
      */
     public boolean caseDisponible(int x, int y) {
-        return !this.murs[x][y] && !this.caisses.pos[x][y];
+        return !this.murs[x][y] && !this.caisses.etrePresent(x,y);
     }
 
 
