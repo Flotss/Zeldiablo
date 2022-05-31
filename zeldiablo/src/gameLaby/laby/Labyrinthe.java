@@ -191,7 +191,6 @@ public class Labyrinthe {
                 this.pj.y = suivante[1];
             }
         } while (caseGlacee);
-
     }
 
     /**
@@ -298,7 +297,7 @@ public class Labyrinthe {
 
     /**
      * Getter emplacementCaisse
-     * @return Une liste de tableau de coordonnees qui représente les emplacements de solution des caisses
+     * @return emplacementCaisse
      */
     public EmplacementsCaisse getEmplacementsCaisse() {
         return emplacementsCaisse;
