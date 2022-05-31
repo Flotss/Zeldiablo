@@ -20,9 +20,9 @@ public class EmplacementsCaisse extends Cases {
    */
   public boolean etreFini(Caisses c) {
     boolean fini = true;
-    for (int i = 0; i < c.pos.length; i++) {
-      for (int j = 0; j < c.pos[i].length; j++) {
-        if (c.pos[i][j] != this.pos[i][j]) {
+    for (int i = 0; i < c.getPos().length; i++) {
+      for (int j = 0; j < c.getPos()[i].length; j++) {
+        if (c.getPos()[i][j] != this.getPos()[i][j]) {
           fini = false;
           break;
         }

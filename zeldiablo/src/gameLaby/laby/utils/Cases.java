@@ -4,7 +4,7 @@ public class Cases {
   /**
    * Attributs de la coordonnée
    */
-  public boolean [][] pos;
+  private boolean [][] pos;
 
 
   /**
@@ -34,5 +34,13 @@ public class Cases {
    */
   public boolean etrePresent(int x, int y) {
     return this.pos[x][y];
+  }
+
+  /**
+   * Getter des cases
+   * @return les positions de cases
+   */
+  public boolean[][] getPos() {
+      return this.pos;
   }
 }

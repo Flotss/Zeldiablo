@@ -282,7 +282,7 @@ public class Labyrinthe {
      * @return true si la case est une caisse
      */
     public boolean getCaisse(int x, int y) {
-        return this.caisses.pos[x][y];
+        return this.caisses.getPos()[x][y];
     }
 
     /**

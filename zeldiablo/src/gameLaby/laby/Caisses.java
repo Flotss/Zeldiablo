@@ -22,8 +22,8 @@ public class Caisses extends Cases {
    * @return true si la caisse a pu se deplacer, false sinon
    */
   public void deplacer(int x, int y, int dx, int dy) {
-    this.pos[x][y] = false;
-    this.pos[dx][dy] = true;
+    this.getPos()[x][y] = false;
+    this.getPos()[dx][dy] = true;
   }
 
 }

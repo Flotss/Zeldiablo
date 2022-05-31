@@ -26,9 +26,9 @@ public class LabyDessin implements DessinJeu {
             gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
             EmplacementsCaisse emplacementCaisse = labyJeu.getLaby().getEmplacementsCaisse();
-            for (int i = 0; i < emplacementCaisse.pos.length; i++) {
-                for (int j = 0; j < emplacementCaisse.pos[i].length; j++) {
-                    if (emplacementCaisse.pos[i][j]) {
+            for (int i = 0; i < emplacementCaisse.getPos().length; i++) {
+                for (int j = 0; j < emplacementCaisse.getPos()[i].length; j++) {
+                    if (emplacementCaisse.getPos()[i][j]) {
                         gc.setFill(Color.PINK);
                         gc.fillOval(i*60+15, j*60+15,30,30);
                     }
