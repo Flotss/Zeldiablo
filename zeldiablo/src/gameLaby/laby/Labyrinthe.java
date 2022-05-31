@@ -176,7 +176,7 @@ public class Labyrinthe {
             int[] suivante = getSuivant(courante[0], courante[1], action);
             caseGlacee = this.glace[suivante[0]][suivante[1]];
 
-            if (this.caisses.pos[suivante[0]][suivante[1]]) {
+            if (this.caisses.etrePresent(suivante[0],suivante[1])) {
                 if (caseGlacee){
                     //Si la case derriere la caisse est bloquée, on ne pourra pas pousser plus la caisse donc on ne glissera plus
                     caseGlacee = caseDisponible(getSuivant(suivante[0], suivante[1], action)[0], getSuivant(suivante[0], suivante[1], action)[1]);
@@ -185,7 +185,7 @@ public class Labyrinthe {
                 deplacerCaisse(suivante[0], suivante[1], action);
             }
             // si c'est pas un mur, on effectue le deplacement
-            if (!this.murs[suivante[0]][suivante[1]] && !caisses.pos[suivante[0]][suivante[1]]) {
+            if (!this.murs[suivante[0]][suivante[1]] && !caisses.etrePresent(suivante[0],suivante[1])) {
                 // on met a jour personnage
                 this.pj.x = suivante[0];
                 this.pj.y = suivante[1];
