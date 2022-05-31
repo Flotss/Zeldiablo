@@ -1,14 +1,10 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autonumber
-
-create LabyJeu
-create Labyrinthe
-
+participant "LabyJeu"
+participant "Labyrinthe"
 
 activate LabyJeu
-
 LabyJeu -> Labyrinthe : deplacerPerso()
 activate Labyrinthe
 loop caseGlacee == true
