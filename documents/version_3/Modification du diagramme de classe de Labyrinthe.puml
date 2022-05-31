@@ -2,8 +2,9 @@
 
 class Labyrinthe{
     - murs : boolean[][]
-    + getSuivant(int x, int y, String action) : int[]
+    + getSuivant(x : int, y : int, action : String) : int[]
     + deplacerPerso(pj : Perso, direction : String)
+    + deplacerCaisses(x : int, y : int, direction : String)
     + caseDisponible(x : int, y : int) : boolean
     + getLength() : int
     + getLengthY() : int
@@ -12,25 +13,25 @@ class Labyrinthe{
 
 class Cases{
     - pos: boolean[][]
-    + Positions(int x, int y)
-    + ajouter(int x, int y)
-    + etrePresent(int x, int y): boolean
+    + Positions(int : x, int : y)
+    + ajouter(int : x, int : y)
+    + etrePresent(int : x, int : y): boolean
 }
 
 class Caisses {
     + Caisses(int x, int y)
-    + deplacerCaisses(int x, int y, String direction): boolean
+    + deplacer(x : int, y : int, dx : int, dy : int): boolean
 }
 
 class EmplacementCaisses {
     + EmplacementCaisses(int x, int y)
-    + etreFini(Caisses c): boolean
+    + etreFini(c : Caisses): boolean
 }
 
 class Perso {
     + x : int
     + y : int
-    + Perso(dx: int, int dy)
+    + Perso(dx : int, dy : int)
     + etrePresent(dx : int, dy : int) : boolean
     + getX() : int
     + getY() : int
