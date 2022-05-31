@@ -43,12 +43,12 @@ public class Labyrinthe {
     /**
      * les caisses du labyrinthe
      */
-    public boolean[][] caisses;
+    public Caisses caisses;
 
     /**
      * les emplacements pour les caisses du labyrinthe
      */
-    public ArrayList<int[]> emplacementsCaisse;
+    public EmplacementsCaisse emplacementsCaisse;
 
 
     /**
@@ -109,9 +109,10 @@ public class Labyrinthe {
 
         // creation labyrinthe vide
         this.murs = new boolean[nbColonnes][nbLignes];
-        this.caisses = new boolean[nbColonnes][nbLignes];
+        this.caisses = new Caisses(nbColonnes, nbLignes);
         this.pj = null;
         this.glace = new boolean[nbColonnes][nbLignes];
+        this.emplacementsCaisse = new EmplacementsCaisse(nbColonnes, nbLignes);
 
         // lecture des cases
         String ligne = bfRead.readLine();
@@ -119,8 +120,6 @@ public class Labyrinthe {
         // stocke les indices courants
         int numeroLigne = 0;
 
-        //initialisation de l'arraylist emplacement caisse
-        this.emplacementsCaisse = new ArrayList<>();
 
         // parcours le fichier
         while (ligne != null) {
@@ -132,10 +131,10 @@ public class Labyrinthe {
                         this.murs[colonne][numeroLigne] = true;
                         break;
                     case CAISSE:
-                        this.caisses[colonne][numeroLigne] = true;
+                        this.caisses.ajouter(colonne, numeroLigne);
                         break;
                     case EMPLACEMENT_CAISSE:
-                        this.emplacementsCaisse.add(new int[]{colonne, numeroLigne});
+                        this.emplacementsCaisse.ajouter(colonne, numeroLigne);
                         break;
                     case VIDE:
                         this.murs[colonne][numeroLigne] = false;
@@ -177,7 +176,7 @@ public class Labyrinthe {
             int[] suivante = getSuivant(courante[0], courante[1], action);
             caseGlacee = this.glace[suivante[0]][suivante[1]];
 
-            if (caisses[suivante[0]][suivante[1]]) {
+            if (this.caisses.pos[suivante[0]][suivante[1]]) {
                 if (caseGlacee){
                     //Si la case derriere la caisse est bloquée, on ne pourra pas pousser plus la caisse donc on ne glissera plus
                     caseGlacee = caseDisponible(getSuivant(suivante[0], suivante[1], action)[0], getSuivant(suivante[0], suivante[1], action)[1]);
@@ -186,7 +185,7 @@ public class Labyrinthe {
                 deplacerCaisse(suivante[0], suivante[1], action);
             }
             // si c'est pas un mur, on effectue le deplacement
-            if (!this.murs[suivante[0]][suivante[1]] && !caisses[suivante[0]][suivante[1]]) {
+            if (!this.murs[suivante[0]][suivante[1]] && !caisses.pos[suivante[0]][suivante[1]]) {
                 // on met a jour personnage
                 this.pj.x = suivante[0];
                 this.pj.y = suivante[1];
@@ -214,8 +213,8 @@ public class Labyrinthe {
             if (caseDisponible(suivante[0], suivante[1])) {
                 caseGlacee = this.glace[suivante[0]][suivante[1]];
                 // on met a jour la caisse
-                this.caisses[precedente[0]][precedente[1]] = false;
-                this.caisses[suivante[0]][suivante[1]] = true;
+                this.caisses.pos[precedente[0]][precedente[1]] = false;
+                this.caisses.pos[suivante[0]][suivante[1]] = true;
             }
             precedente = suivante;
             suivante = getSuivant(suivante[0],suivante[1],direction);
@@ -231,7 +230,7 @@ public class Labyrinthe {
      * @return true si la case est disponible
      */
     public boolean caseDisponible(int x, int y) {
-        return !this.murs[x][y] && !this.caisses[x][y];
+        return !this.murs[x][y] && !this.caisses.pos[x][y];
     }
 
 
@@ -240,32 +239,7 @@ public class Labyrinthe {
      * @return vrai si toutes les caisses sont sur les emplacements de caisse
      */
     public boolean etreFini() {
-        boolean finis = true;
-        for (int[] emplacement : emplacementsCaisse) {
-            if (!this.caisses[emplacement[0]][emplacement[1]]) {
-                finis = false;
-                break;
-            }
-        }
-        return finis;
-    }
-
-
-    /**
-     * La case est un emplacement de  caisse ou non
-     * @param x Coordonnee x de la caisse
-     * @param y Coordonnee y de la caisse
-     * @return true si la case est un emplacement de caisse sinon false
-     */
-    public boolean etreEmplacementCaisse(int x, int y){
-        boolean trouve = false;
-        for (int[] emplacement : emplacementsCaisse) {
-            if (emplacement[0]==x && emplacement[1] == y) {
-                trouve = true;
-                break;
-            }
-        }
-        return trouve;
+        return this.emplacementsCaisse.etreFini(this.caisses);
     }
 
     // ##################################
@@ -309,7 +283,7 @@ public class Labyrinthe {
      * @return true si la case est une caisse
      */
     public boolean getCaisse(int x, int y) {
-        return this.caisses[x][y];
+        return this.caisses.pos[x][y];
     }
 
     /**
@@ -327,7 +301,7 @@ public class Labyrinthe {
      * Getter emplacementCaisse
      * @return Une liste de tableau de coordonnees qui représente les emplacements de solution des caisses
      */
-    public ArrayList<int[]> getEmplacementsCaisse() {
+    public EmplacementsCaisse getEmplacementsCaisse() {
         return emplacementsCaisse;
     }
 }
