@@ -35,8 +35,8 @@ public class LabyDessin implements DessinJeu {
                 }
 
             }
-            for (int i = 0; i < labyJeu.getLaby().murs.length; i++) {
-                for (int j = 0; j < labyJeu.getLaby().murs[i].length; j++) {
+            for (int i = 0; i < labyJeu.getLaby().getMurs().length; i++) {
+                for (int j = 0; j < labyJeu.getLaby().getMurs()[i].length; j++) {
                     if(labyJeu.getLaby().getGlace(i,j)){
                         gc.setFill(Color.LIGHTBLUE);
                         gc.fillRect(i * 60, j * 60, 60, 60);
@@ -52,7 +52,7 @@ public class LabyDessin implements DessinJeu {
                 }
             }
 
-            Perso perso = labyJeu.getLaby().pj;
+            Perso perso = labyJeu.getLaby().getPj();
 
             gc.setFill(Color.RED);
             gc.fillOval(perso.x * 60, perso.y * 60, 60, 60);
