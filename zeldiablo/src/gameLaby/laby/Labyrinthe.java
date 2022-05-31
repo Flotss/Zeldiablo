@@ -213,8 +213,7 @@ public class Labyrinthe {
             if (caseDisponible(suivante[0], suivante[1])) {
                 caseGlacee = this.glace[suivante[0]][suivante[1]];
                 // on met a jour la caisse
-                this.caisses.pos[precedente[0]][precedente[1]] = false;
-                this.caisses.pos[suivante[0]][suivante[1]] = true;
+                this.caisses.deplacer(precedente[0], precedente[1], suivante[0], suivante[1]);
             }
             precedente = suivante;
             suivante = getSuivant(suivante[0],suivante[1],direction);
