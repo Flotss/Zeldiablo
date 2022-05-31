@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+participant "main" as m
+participant "laby : Labyrinthe" as l
+participant "pj : Perso" as p
+participant "caisses : Caisse" as c
+participant "emplacementCaisses : EmplacementCaisses" as ep
+
+autonumber
+
+
+
+activate m
+
+m -> l : new()
+activate l
+
+l -> c : new
+activate c
+l <-- c
+l -> ep : new
+activate ep
+l <-- ep
+
+l -> ep : ajouter(x,y)
+l <-- ep
+l -> c : ajouter(x,y)
+l <-- c
+l -> p : new(x,y)
+activate p
+l <-- p
+deactivate p
+deactivate c
+deactivate ep
+m <-- l
+deactivate l
+deactivate m
+
+
+
+@enduml

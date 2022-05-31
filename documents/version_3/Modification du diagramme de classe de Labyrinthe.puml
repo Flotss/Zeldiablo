@@ -1,23 +1,30 @@
 @startuml
 
 class Labyrinthe{
-    + pj : Perso
     + murs : boolean[][]
-    + caisses : boolean[][]
-    + emplacementCaisse ArrayList<int[]>
-    + getSuivant(pj : Perso) : int[]
+    + getSuivant(int x, int y, String action) : int[]
     + deplacerPerso(pj : Perso, direction : String)
-    + etreFini() : boolean
-    + deplacerCaisse(x : int, y : int, direction : String) : boolean
     + caseDisponible(x : int, y : int) : boolean
     + getLength() : int
     + getLengthY() : int
     + getMur(x : int, y : int) : boolean
-    + getCaisse(x : int, y : int) : int[]
-    + getEmplacementsCaisse() : boolean
+}
+
+class Positions{
+    - pos: boolean[][]
+    + Positions(int x, int y)
+    + ajouter(int x, int y)
+    + etrePresent(int x, int y): boolean
 }
 
 class Caisse {
+    + Caisse()
+    + deplacerCaisse(int x, int y, String direction)
+}
+
+class EmplacementCaisse {
+    + EmplacementCaisse()
+    + etreFini(Caisse c): boolean
 }
 
 class Perso {
@@ -28,8 +35,12 @@ class Perso {
     + getX() : int
     + getY() : int
 }
+Labyrinthe "*" <-- "1" Perso : - pj
 
-Perso <-- Caisse
+Labyrinthe "*" <-- "1" Caisse : - caisses
 
+Labyrinthe "*" <-- "1" EmplacementCaisse : - emplacementCaisses
 
+Positions <|-- Caisse
+Positions <|-- EmplacementCaisse
 @enduml
