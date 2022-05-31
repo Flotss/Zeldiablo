@@ -3,8 +3,8 @@
 
 autonumber
 
-create LabyJeu
-create Labyrinthe
+participant LabyJeu
+participant Labyrinthe
 
 
 activate LabyJeu
