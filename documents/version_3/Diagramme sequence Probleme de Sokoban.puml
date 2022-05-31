@@ -19,10 +19,13 @@ l <-- c : presence: boolean
 deactivate c
 
 alt presence
-    l -> c : deplacerCaisse(int x, int y, String direction)
+    l -> l : deplacerCaisse(int x, int y, String direction)
+    activate l
+    l -> c : deplacer(int x, int y, String direction)
     activate c
     l <-- c
     deactivate c
+    deactivate l
      l -> ep : etreFini(Caisse caisses)
      activate ep
      loop
