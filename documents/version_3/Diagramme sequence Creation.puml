@@ -13,17 +13,17 @@ autonumber
 activate m
 
 create l
-m -> l : new()
+m -> l : new Labyrinthe()
 activate l
 
 create c
-l -> c : new (int x, int y)
+l -> c : new Caisse(int x, int y)
 activate c
 l <-- c
 deactivate c
 
 create ep
-l -> ep : new (int x, int y)
+l -> ep : new EmplacementCaisse(int x, int y)
 activate ep
 l <-- ep
 deactivate ep
@@ -39,7 +39,7 @@ l <-- c
 deactivate c
 
 create p
-l -> p : new(x,y)
+l -> p : new Perso(x,y)
 activate p
 l <-- p
 deactivate p
