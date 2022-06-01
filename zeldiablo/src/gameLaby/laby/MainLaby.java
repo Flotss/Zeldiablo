@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class MainLaby {
   public static void main(String[] args) throws IOException {
-    int pFPS = 20;
+    int pFPS = 10;
 
     // creation des objets
     LabyJeu jeuLab = new LabyJeu("labySimple/labySokobanGlace.txt");
