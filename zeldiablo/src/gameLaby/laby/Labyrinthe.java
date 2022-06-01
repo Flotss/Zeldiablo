@@ -221,6 +221,33 @@ public class Labyrinthe {
     }
 
     /**
+     * Propulser la caisse en fonction de la direction.
+     *
+     * @param direction Direction du personnage
+     */
+    public void propulserCaisse(String direction) {
+
+        // case courante
+        int[] courante = {this.pj.x, this.pj.y};
+        // calcule case suivante
+        int[] precedente = getSuivant(courante[0], courante[1], direction);
+        int[] suivante =  getSuivant(precedente[0], precedente[1], direction);
+
+
+        if(this.caisses.etrePresent(precedente[0],precedente[1])) {
+            // si c'est pas un mur, on effectue le deplacement
+            while (caseDisponible(suivante[0], suivante[1])) {
+                // on met a jour la caisse
+                this.caisses.deplacer(precedente[0],precedente[1],suivante[0],suivante[1]);
+                // calcule case suivante
+                precedente = suivante;
+                suivante = getSuivant(suivante[0], suivante[1], direction);
+            }
+        }
+    }
+
+
+    /**
      * Test si la case est disponible
      * Pour une caisse ou un personnage ou un mur
      *

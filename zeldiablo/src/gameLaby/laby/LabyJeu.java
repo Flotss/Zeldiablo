@@ -35,6 +35,16 @@ public class LabyJeu implements Jeu {
       laby.deplacerPerso(GAUCHE);
     } else if (clavier.droite) {
       laby.deplacerPerso(DROITE);
+    }else if (clavier.espace){
+      if (clavier.dhaut) {
+        laby.propulserCaisse(HAUT);
+      } else if (clavier.dbas) {
+        laby.propulserCaisse(BAS);
+      } else if (clavier.dgauche) {
+        laby.propulserCaisse(GAUCHE);
+      } else if (clavier.ddroite) {
+        laby.propulserCaisse(DROITE);
+      }
     }
   }
 
