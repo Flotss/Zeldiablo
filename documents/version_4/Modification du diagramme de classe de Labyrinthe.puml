@@ -7,6 +7,7 @@ class Labyrinthe{
     + deplacerPerso(pj : Perso, direction : String)
     + deplacerCaisses(x : int, y : int, direction : String)
     + caseDisponible(x : int, y : int) : boolean
+    + propulserCaisse(String direction)
     + etreFini() : boolean
     + getLength() : int
     + getLengthY() : int

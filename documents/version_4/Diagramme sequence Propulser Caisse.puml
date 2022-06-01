@@ -10,53 +10,28 @@ participant "emplacementCaisses : EmplacementCaisses" as ep
 
 autonumber
 
-lj -> l : deplacerPerso(String action)
+lj -> l : propulserCaisse(String action)
 activate lj
 activate l
-loop etreGlacee
-    l -> l : getSuivant()
-    l -> c : etrePresent(x,y)
-    activate c
-    l <-- c : presence: boolean
-    deactivate c
+l -> l : getSuivant()
+l -> l : getSuivant()
+l -> c : etrePresent(x,y)
+activate c
+l <-- c : presence: boolean
+deactivate c
 
-    alt presence
-        l -> l : deplacerCaisse(int x, int y, String direction)
-        activate l
-        loop etreGlacee
-            l -> c : deplacer(int x, int y, String direction)
-            activate c
-            l <-- c
-            deactivate c
-        end
-        deactivate l
-         l -> ep : etreFini(Caisse caisses)
-         activate ep
-         loop
-         ep -> c : etrePresent(int x, int y)
-         activate c
-         ep <-- c : presence : true
-         deactivate c
-         end
-         l <-- ep : finis : boolean
-         deactivate ep
+alt presence
+
+    l -> l : caseDisponible(int suivante[0], int suivante[1])
+    loop caseDispo
+        l -> c : deplacer(int precedente[0], int precedente[1], int suivante[0], int suivante[1])
+        activate c
+        l <-- c
+        deactivate c
+        l -> l : getSuivant()
+        l -> l : caseDisponible(int suivante[0], int suivante[1])
     end
-    l -> c : etrePresent(x,y)
-    activate c
-    l <-- c : presence: boolean
-    deactivate c
 
-    alt !presence && !murs[x][y]
-
-        l -> p : x = suivante[0]
-        activate p
-        l <-- p
-        deactivate p
-        l -> p : y = suivante[1]
-        activate p
-        l <-- p
-        deactivate p
-    end
 end
 
 lj <-- l

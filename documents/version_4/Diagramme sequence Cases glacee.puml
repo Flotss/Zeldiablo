@@ -24,7 +24,7 @@ loop etreGlacee
         l -> l : deplacerCaisse(int x, int y, String direction)
         activate l
         loop etreGlacee
-            l -> c : deplacer(int x, int y, String direction)
+            l -> c : deplacer(int precedente[0], int precedente[1], int suivante[0], int suivante[1])
             activate c
             l <-- c
             deactivate c
