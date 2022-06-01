@@ -21,7 +21,7 @@ public class Labyrinthe {
     public static final char VIDE = '.';
     public static final char CAISSE = 'C';
     public static final char EMPLACEMENT_CAISSE = 'O';
-    public static final char glacee = 'G';
+    public static final char GLACEE = 'G';
 
     /**
      * constantes actions possibles
@@ -145,7 +145,8 @@ public class Labyrinthe {
                         this.murs[colonne][numeroLigne] = false;
                         // ajoute PJ
                         this.pj = new Perso(colonne, numeroLigne);
-                    case glacee:
+                        break;
+                    case GLACEE:
                         this.glace.ajouter(colonne,numeroLigne);
                         break;
                     default:
