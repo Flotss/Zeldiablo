@@ -12,17 +12,13 @@ autonumber
 
 activate m
 
-create l
 m -> l : new()
 activate l
 
-create c
 l -> c : new (int x, int y)
 activate c
 l <-- c
 deactivate c
-
-create ep
 l -> ep : new (int x, int y)
 activate ep
 l <-- ep
@@ -37,8 +33,6 @@ l -> c : ajouter(x,y)
 activate c
 l <-- c
 deactivate c
-
-create p
 l -> p : new(x,y)
 activate p
 l <-- p

@@ -36,7 +36,11 @@ deactivate c
 
 alt !presence && !murs[x][y]
 
-    l -> p : deplacerPerso(String action))
+    l -> p : x = suivante[0]
+    activate p
+    l <-- p
+    deactivate p
+    l -> p : y = suivante[1]
     activate p
     l <-- p
     deactivate p
