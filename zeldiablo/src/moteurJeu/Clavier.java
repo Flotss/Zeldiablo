@@ -8,6 +8,7 @@ public class Clavier {
      * controle appuyes
      */
     public boolean haut, bas, gauche, droite, dhaut, dbas, dgauche, ddroite, espace;
+    public static boolean debut = false;
 
     /**
      * stocke les commandes
@@ -15,7 +16,7 @@ public class Clavier {
      * @param event evenement clavier
      */
     public void appuyerTouche(KeyEvent event) {
-
+        debut = true;
         switch (event.getCode().toString()) {
 
             // si touche bas

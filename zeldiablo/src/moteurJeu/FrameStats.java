@@ -1,11 +1,12 @@
 package moteurJeu;
 
+import gameLaby.laby.LabyDessin;
 import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.ReadOnlyStringWrapper;
 
 public class FrameStats {
 
-    private long frameCount;
+    public static long frameCount;
     private double meanFrameInterval; // millis
     private final ReadOnlyStringWrapper text = new ReadOnlyStringWrapper(this, "text", "Frame count: 0 Average frame interval: N/A");
 
@@ -18,9 +19,13 @@ public class FrameStats {
     }
 
     public void addFrame(long frameDurationNanos) {
-        meanFrameInterval = (meanFrameInterval * frameCount + frameDurationNanos / 1_000_000.0) / (frameCount + 1);
-        frameCount++;
-        text.set(toString());
+
+        if (!LabyDessin.dernierUpdateFait && Clavier.debut){
+            meanFrameInterval = (meanFrameInterval * frameCount + frameDurationNanos / 1_000_000.0) / (frameCount + 1);
+            frameCount++;
+            text.set(toString());
+        }
+
     }
 
     public String getText() {

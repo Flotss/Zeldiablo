@@ -7,9 +7,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import moteurJeu.DessinJeu;
+import moteurJeu.FrameStats;
 import moteurJeu.Jeu;
 
 import java.util.ArrayList;
+
 
 public class LabyDessin implements DessinJeu {
 
@@ -62,7 +64,8 @@ public class LabyDessin implements DessinJeu {
             gc.setFill(Color.GRAY);
             gc.fillRect(canvas.getWidth()/2-150,canvas.getHeight()/2-60,300,120);
             gc.setFill(Color.WHITE);
-            gc.fillText("Bravo! Vous avez gagner!",canvas.getWidth()/2-60,canvas.getHeight()/2,1000);
+            String fin = "Bravo! Vous avez gagner! En :" + FrameStats.frameCount;
+            gc.fillText(fin,canvas.getWidth()/2-60,canvas.getHeight()/2,1000);
 
         }
     }
