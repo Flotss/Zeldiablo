@@ -55,7 +55,7 @@ public class Labyrinthe {
     /**
      * les cases glacée du labyrinthe
      */
-    private boolean[][] glace;
+    private Glace glace;
 
     /**
      * retourne la case suivante selon une actions
@@ -112,7 +112,7 @@ public class Labyrinthe {
         this.murs = new boolean[nbColonnes][nbLignes];
         this.caisses = new Caisses(nbColonnes, nbLignes);
         this.pj = null;
-        this.glace = new boolean[nbColonnes][nbLignes];
+        this.glace = new Glace(nbColonnes,nbLignes);
         this.emplacementsCaisse = new EmplacementsCaisse(nbColonnes, nbLignes);
 
         // lecture des cases
@@ -146,7 +146,7 @@ public class Labyrinthe {
                         // ajoute PJ
                         this.pj = new Perso(colonne, numeroLigne);
                     case glacee:
-                        this.glace[colonne][numeroLigne] = true;
+                        this.glace.ajouter(colonne,numeroLigne);
                         break;
                     default:
                         throw new Error("caractere inconnu " + c);
@@ -175,7 +175,7 @@ public class Labyrinthe {
             int[] courante = {this.pj.x, this.pj.y};
             // calcule case suivante
             int[] suivante = getSuivant(courante[0], courante[1], action);
-            caseGlacee = this.glace[suivante[0]][suivante[1]];
+            caseGlacee = this.glace.etrePresent(suivante[0],suivante[1]);
 
             if (this.caisses.etrePresent(suivante[0],suivante[1])) {
                 if (caseGlacee){
@@ -211,7 +211,7 @@ public class Labyrinthe {
 
             // si c'est pas un mur, on effectue le deplacement
             if (caseDisponible(suivante[0], suivante[1])) {
-                caseGlacee = this.glace[suivante[0]][suivante[1]];
+                caseGlacee = this.glace.etrePresent(suivante[0],suivante[1]);
                 // on met a jour la caisse
                 this.caisses.deplacer(precedente[0], precedente[1], suivante[0], suivante[1]);
             }
@@ -292,7 +292,7 @@ public class Labyrinthe {
      * @return true si la case est glacee
      */
     public boolean getGlace(int x, int y) {
-        return this.glace[x][y];
+        return this.glace.etrePresent(x,y);
     }
 
 

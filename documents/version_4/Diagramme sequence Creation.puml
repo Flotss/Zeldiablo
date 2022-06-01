@@ -4,6 +4,7 @@ participant "main" as m
 participant "laby : Labyrinthe" as l
 participant "pj : Perso" as p
 participant "caisses : Caisse" as c
+participant "glace : Glace" as g
 participant "emplacementCaisses : EmplacementCaisses" as ep
 
 autonumber
@@ -22,24 +23,34 @@ activate c
 l <-- c
 deactivate c
 
+create g
+l -> g : new (int x, int y)
+activate g
+l <-- g
+deactivate g
+
 create ep
 l -> ep : new (int x, int y)
 activate ep
 l <-- ep
 deactivate ep
 
-l -> ep : ajouter(x,y)
+l -> ep : ajouter(int x, int y)
 activate ep
 l <-- ep
 deactivate ep
 
-l -> c : ajouter(x,y)
+l -> c : ajouter(int x, int y)
 activate c
 l <-- c
 deactivate c
+l -> g : ajouter(int x, int y)
+activate g
+l <-- g
+deactivate g
 
 create p
-l -> p : new(x,y)
+l -> p : new(int x, int y)
 activate p
 l <-- p
 deactivate p
