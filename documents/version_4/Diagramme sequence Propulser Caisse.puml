@@ -2,10 +2,7 @@
 'https://plantuml.com/sequence-diagram
 participant "jeuLab : LabyJeu " as lj
 participant "laby : Labyrinthe" as l
-participant "pj : Perso" as p
 participant "caisses : Caisse" as c
-participant "glace : Glace" as g
-participant "emplacementCaisses : EmplacementCaisses" as ep
 
 
 autonumber
