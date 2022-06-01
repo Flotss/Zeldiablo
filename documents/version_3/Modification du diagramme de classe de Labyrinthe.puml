@@ -36,8 +36,8 @@ class EmplacementsCaisse {
 }
 
 class Perso {
-    - x : int
-    - y : int
+    ~ x : int
+    ~ y : int
     + Perso(dx : int, dy : int)
     + etrePresent(dx : int, dy : int) : boolean
     + getX() : int
