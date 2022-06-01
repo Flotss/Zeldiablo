@@ -15,6 +15,7 @@ class Labyrinthe{
     + getCaisses(x : int, y : int) : boolean
     + getEmplacementsCaisse() : EmplacementsCaisse
     + getPj() : Perso
+    + getGlace(x : int, y : int) : boolean
 }
 
 class Cases{
@@ -40,8 +41,8 @@ class Glace {
 }
 
 class Perso {
-    - x : int
-    - y : int
+    ~ x : int
+    ~ y : int
     + Perso(dx : int, dy : int)
     + etrePresent(dx : int, dy : int) : boolean
     + getX() : int
