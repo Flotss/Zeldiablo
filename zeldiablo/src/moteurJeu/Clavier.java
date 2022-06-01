@@ -7,7 +7,7 @@ public class Clavier {
     /**
      * controle appuyes
      */
-    public boolean haut, bas, gauche, droite;
+    public boolean haut, bas, gauche, droite, dhaut, dbas, dgauche, ddroite, espace;
 
     /**
      * stocke les commandes
@@ -20,28 +20,48 @@ public class Clavier {
 
             // si touche bas
             case "S":
-            case "DOWN":
                 this.bas = true;
                 break;
 
             // si touche haut
             case "Z":
-            case "UP":
                 this.haut = true;
                 break;
 
             // si touche gauche
             case "Q":
-            case "LEFT":
                 this.gauche = true;
                 break;
 
             // si touche droite
             case "D":
-            case "RIGHT":
                 this.droite = true;
                 break;
 
+            // si fleche directionelle bas
+            case "DOWN":
+                this.dbas = true;
+                break;
+
+            // si fleche directionelle haut
+            case "UP":
+                this.dhaut = true;
+                break;
+
+            // si fleche directionelle gauche
+            case "LEFT":
+                this.dgauche = true;
+                break;
+
+            // si fleche directionelle droite
+            case "RIGHT":
+                this.ddroite = true;
+                break;
+
+            // si barre espace
+            case "SPACE":
+                this.espace = true;
+                break;
         }
 
     }
@@ -57,28 +77,48 @@ public class Clavier {
 
             // si touche bas
             case "S":
-            case "DOWN":
                 this.bas = false;
                 break;
 
             // si touche haut
             case "Z":
-            case "UP":
                 this.haut = false;
                 break;
 
             // si touche gauche
             case "Q":
-            case "LEFT":
                 this.gauche = false;
                 break;
 
             // si touche droite
             case "D":
-            case "RIGHT":
                 this.droite = false;
                 break;
 
+            // si fleche directionelle bas
+            case "DOWN":
+                this.dbas = false;
+                break;
+
+            // si fleche directionelle haut
+            case "UP":
+                this.dhaut = false;
+                break;
+
+            // si fleche directionelle gauche
+            case "LEFT":
+                this.dgauche = false;
+                break;
+
+            // si fleche directionelle droite
+            case "RIGHT":
+                this.ddroite = false;
+                break;
+
+            // si barre espace
+            case "SPACE":
+                this.espace = false;
+                break;
         }
     }
 }

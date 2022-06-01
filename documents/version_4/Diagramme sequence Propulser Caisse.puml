@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+participant "jeuLab : LabyJeu " as lj
+participant "laby : Labyrinthe" as l
+participant "caisses : Caisse" as c
+
+
+autonumber
+
+lj -> l : propulserCaisse(String action)
+activate lj
+activate l
+l -> l : getSuivant()
+l -> l : getSuivant()
+l -> c : etrePresent(x,y)
+activate c
+l <-- c : presence: boolean
+deactivate c
+
+alt presence
+
+    l -> l : caseDisponible(int suivante[0], int suivante[1])
+    loop caseDispo
+        l -> c : deplacer(int precedente[0], int precedente[1], int suivante[0], int suivante[1])
+        activate c
+        l <-- c
+        deactivate c
+        l -> l : getSuivant()
+        l -> l : caseDisponible(int suivante[0], int suivante[1])
+    end
+
+end
+
+lj <-- l
+deactivate l
+
+
+
+
+@enduml
