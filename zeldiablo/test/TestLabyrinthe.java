@@ -2,6 +2,7 @@ import gameLaby.laby.Labyrinthe;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -93,5 +94,20 @@ public class TestLabyrinthe {
 
         //Verification
         assertFalse(laby.etreFini(), "Le labyrinthe ne devrait pas etre fini");
+    }
+
+    @Test
+    public void test08_emplacementGlace() throws IOException {
+        // Initialisation
+        Labyrinthe laby = new Labyrinthe("labySimple/labySokobanGlace.txt");
+
+        //Verification de la position des sorties
+        for(int i = 7 ; i <= 9 ; i++){
+            assertTrue(laby.getGlace(18,i),"les coordonnes 18,"+i+" devraient etre un emplacement de glace");
+        }
+        assertTrue(laby.getGlace(17,7),"les coordonnes 17,7 devraient etre un emplacement de glace");
+        for(int i = 11 ; i <= 16 ; i++){
+            assertTrue(laby.getGlace(i,12),"les coordonnes "+i+",12 devraient etre un emplacement de glace");
+        }
     }
 }
