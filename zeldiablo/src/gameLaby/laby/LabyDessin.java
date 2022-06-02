@@ -25,9 +25,9 @@ public class LabyDessin implements DessinJeu {
         LabyJeu labyJeu = (LabyJeu) jeu;
         final GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        ImageView imageMur = new ImageView(new Image("src/resources/mur.png"));
-        imageMur.setFitWidth(60);
-        imageMur.setFitHeight(60);
+        Image imageMur = new Image("file:resources/mur.png",60,60,false,false);
+        Image imageCaisse = new Image("file:resources/crate.png",50,50,false,false);
+        Image imageGlace = new Image("file:resources/glace.png",60,60,false,false);
 
         if (!dernierUpdateFait) {
             gc.setFill(Color.LIGHTGRAY);
@@ -46,16 +46,13 @@ public class LabyDessin implements DessinJeu {
             for (int i = 0; i < labyJeu.getLaby().getMurs().length; i++) {
                 for (int j = 0; j < labyJeu.getLaby().getMurs()[i].length; j++) {
                     if(labyJeu.getLaby().getGlace(i,j)){
-                        gc.setFill(Color.LIGHTBLUE);
-                        gc.fillRect(i * 60, j * 60, 60, 60);
+                        gc.drawImage(imageGlace, i * 60, j * 60);
                     }
                     if (labyJeu.getLaby().getMur(i, j)) {
-                        gc.setFill(Color.BLACK);
-                        gc.drawImage(imageMur.getImage(), i * 60, j * 60);
+                        gc.drawImage(imageMur, i * 60, j * 60);
                     }
                     if (labyJeu.getLaby().getCaisse(i, j)) {
-                        gc.setFill(Color.BROWN);
-                        gc.fillRect(i * 60+5, j * 60+5, 50, 50);
+                        gc.drawImage(imageCaisse, i * 60.5, j * 60.5);
                     }
                 }
             }
