@@ -59,7 +59,7 @@ class Escalier {
     + Escalier(int x, int y)
     + etrePresent(int x, int y)
     + afficherEscalier()
-    + desafficherEscalier()
+    + cacherEscalier()
     + etreAffiche(): boolean
 }
 

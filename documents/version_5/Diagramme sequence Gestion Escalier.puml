@@ -75,7 +75,7 @@ loop etreGlacee
         l -> e: afficherEscalier()
         l <-- e
     else
-        l ->e: desafficherEscalier()
+        l ->e: cacherEscalier()
         l <-- e
     end
 end
