@@ -19,19 +19,19 @@ class Labyrinthe{
 
 class Cases{
     - pos: boolean[][]
-    + Cases(int : x, int : y)
+    + Cases(x : int, y : int)
     + ajouter(int : x, int : y)
     + etrePresent(int : x, int : y): boolean
     + getPos() : int
 }
 
 class Caisses {
-    + Caisses(int x, int y)
+    + Caisses(x : int, y : int)
     + deplacer(x : int, y : int, dx : int, dy : int): boolean
 }
 
 class EmplacementsCaisse {
-    + EmplacementCaisses(int x, int y)
+    + EmplacementCaisses(x : int, y : int)
     + etreFini(c : Caisses): boolean
 }
 

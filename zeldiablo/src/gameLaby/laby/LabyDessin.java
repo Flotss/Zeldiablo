@@ -97,8 +97,8 @@ public class LabyDessin implements DessinJeu {
                     gc.setFill(Color.WHITE);
                     //Affichage d'une page de fin avec le score du joueur a l'aide des frames passees
                     //(~le temps ecoule avec une incertitude de l'ordre de 3seg/minutes)
-                    String fin = "Bravo! Vous avez gagné ! Avec un score de :" + FrameStats.frameCount;
-                    gc.fillText(fin, canvas.getWidth() / 2 - 60, canvas.getHeight() / 2, 1000);
+                    String fin = "Bravo! Vous avez gagné ! Avec un score de : " + FrameStats.frameCount;
+                    gc.fillText(fin, canvas.getWidth() / 2 - 130, canvas.getHeight() / 2, 1000);
 
                 }
             }

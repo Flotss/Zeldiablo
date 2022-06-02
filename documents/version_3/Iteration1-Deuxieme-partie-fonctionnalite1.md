@@ -1,7 +1,7 @@
 1. Mur deplacable (caisse) (10.1) : MANGIN Florian, BAUBY Gaspard et BERNARD Julien
 Descriptif
-  - Le mur deplacable débute sur une case décrite dans le fichier labyrinthe.txt, ensuite le mur doit se deplacer
-    lorsque le personnage le touche dans la direction du personnage et le mur n'est pas bloquer par un mur, 
+  - Le mur(caise) deplacable débute sur une case décrite dans le fichier labyrinthe.txt, ensuite le mur doit se deplacer
+    lorsque le personnage le touche dans la direction du personnage et le mur (caisse) n'est pas bloquer par un mur, 
     le jeu doit affichier le mur à sa position
 Critère : 
   - le mur doit avoir une position initiale
