@@ -7,7 +7,7 @@
 ..X..C.C.X.........
 XXX.XGXX.X...XXXXXX
 X...X.XX.XXXXX..OOX
-X.C..C.....GG...OOX
+X.C..C....EGG...OOX
 XXXXX.XXX.XPXX..OOX
 ....X.GGG.XXXXXXXXX
 ....XXXXXXX........
