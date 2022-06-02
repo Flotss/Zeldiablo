@@ -18,8 +18,15 @@ import java.io.IOException;
 public class LabyDessin implements DessinJeu {
 
     public static boolean dernierUpdateFait = false;
+
+    /**
+     * indique si les images on été chargées ou non
+     */
     public static boolean IMAGE_CHARGE = false;
 
+    /**
+     * image du labyrinthe
+     */
     public Image imageMur;
     public Image imageCaisse;
     public Image imageGlace;
@@ -27,6 +34,7 @@ public class LabyDessin implements DessinJeu {
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
 
+        // si les images n'ont pas été chargées, on les charge et on indique qu'elles ont été chargées
         if(!IMAGE_CHARGE){
             this.imageMur = new Image("file:resources/mur.png",60,60,false,false);
             this.imageCaisse = new Image("file:resources/crate.png",50,50,false,false);
@@ -55,11 +63,9 @@ public class LabyDessin implements DessinJeu {
                 for (int j = 0; j < labyJeu.getLaby().getMurs()[i].length; j++) {
                     if(labyJeu.getLaby().getGlace(i,j)){
                         gc.drawImage(imageGlace, i * 60, j * 60);
-                    }
-                    if (labyJeu.getLaby().getMur(i, j)) {
+                    }else if (labyJeu.getLaby().getMur(i, j)) {
                         gc.drawImage(imageMur, i * 60, j * 60);
-                    }
-                    if (labyJeu.getLaby().getCaisse(i, j)) {
+                    }else if (labyJeu.getLaby().getCaisse(i, j)) {
                         gc.drawImage(imageCaisse, i * 60.5, j * 60.5);
                     }
                 }
