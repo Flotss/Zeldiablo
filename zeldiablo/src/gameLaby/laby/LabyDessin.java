@@ -40,12 +40,12 @@ public class LabyDessin implements DessinJeu {
 
         // si les images n'ont pas ete chargees, on les charge et on indique que les images ont ete chargees
         if (!IMAGE_CHARGE) {
-            this.imageMur = Sprite.IMAGE_MUR;
-            this.imageCaisse = Sprite.IMAGE_CRATE;
-            this.imageGlace = Sprite.IMAGE_GLACE;
-            this.imagePersonnage = Sprite.IMAGE_PERSO;
-            this.imageSortie = Sprite.IMAGE_SORTIE;
-            this.imageEscalier = Sprite.IMAGE_ESCALIER;
+            this.imageMur = Sprite.MUR;
+            this.imageCaisse = Sprite.CAISSE;
+            this.imageGlace = Sprite.GLACE;
+            this.imagePersonnage = Sprite.PERSO;
+            this.imageSortie = Sprite.SORTIE;
+            this.imageEscalier = Sprite.ESCALIER;
             IMAGE_CHARGE = true;
         }
 
