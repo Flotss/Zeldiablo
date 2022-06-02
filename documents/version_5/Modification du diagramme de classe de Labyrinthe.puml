@@ -1,0 +1,63 @@
+@startuml
+
+class Labyrinthe{
+    - murs : boolean[][]
+    + Labyrinthe(nom : String)
+    + getSuivant(x : int, y : int, action : String) : int[]
+    + deplacerPerso(pj : Perso, direction : String)
+    + deplacerCaisses(x : int, y : int, direction : String)
+    + caseDisponible(x : int, y : int) : boolean
+    + propulserCaisse(String direction)
+    + etreFini() : boolean
+    + getLength() : int
+    + getLengthY() : int
+    + getMur(x : int, y : int) : boolean
+    + getMurs() : boolean[][]
+    + getCaisses(x : int, y : int) : boolean
+    + getEmplacementsCaisse() : EmplacementsCaisse
+    + getPj() : Perso
+    + getGlace(x : int, y : int) : boolean
+}
+
+class Cases{
+    - pos: boolean[][]
+    + Cases(int : x, int : y)
+    + ajouter(int : x, int : y)
+    + etrePresent(int : x, int : y): boolean
+    + getPos() : int
+}
+
+class Caisses {
+    + Caisses(int x, int y)
+    + deplacer(x : int, y : int, dx : int, dy : int): boolean
+}
+
+class EmplacementsCaisse {
+    + EmplacementCaisses(int x, int y)
+    + etreFini(c : Caisses): boolean
+}
+
+class Glace {
+    + Glace(int x, int y)
+}
+
+class Perso {
+    ~ x : int
+    ~ y : int
+    + Perso(dx : int, dy : int)
+    + etrePresent(dx : int, dy : int) : boolean
+    + getX() : int
+    + getY() : int
+}
+Labyrinthe "*" --> "1" Perso : - pj
+
+Labyrinthe "*" --> "1" Caisses : - caisses
+
+Labyrinthe "*" --> "1" Glace : - glace
+
+Labyrinthe "*" --> "1" EmplacementsCaisse : - emplacementsCaisse
+
+Cases <|-- Caisses
+Cases <|-- EmplacementsCaisse
+Cases <|-- Glace
+@enduml
