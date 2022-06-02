@@ -10,3 +10,15 @@ Nous avons réussi à concevoir et réaliser ces 2 fonctionnalités.
 - Pour ajouter les images nous avons utilisé une classe **Sprite** qui permet d'initialiser les images et dans la classe **LabyDessin**
   nous chargeons les images la première fois et ensuite nous les réutilisons. Nous avons ensuite modifié la méthode dessiner pour que l'affichage
   n'affiche plus des rectangles ou des cercles, mais les images.
+
+### Point important :
+Mangin Florian :
+
+
+Bauby Gaspard :
+
+
+Simonin Enzo :
+
+
+Bernar Julien :
