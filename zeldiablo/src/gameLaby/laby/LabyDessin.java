@@ -55,8 +55,7 @@ public class LabyDessin implements DessinJeu {
             for (int i = 0; i < emplacementCaisse.getPos().length; i++) {
                 for (int j = 0; j < emplacementCaisse.getPos()[i].length; j++) {
                     if (emplacementCaisse.getPos()[i][j]) {
-                        gc.setFill(Color.PINK);
-                        gc.fillOval(i * 60 + 15, j * 60 + 15, 30, 30);
+                        gc.drawImage(imageSortie, i * 60+2.5, j * 60+2.5);
                     }
                 }
 
@@ -75,14 +74,14 @@ public class LabyDessin implements DessinJeu {
                     }
                     // si la case est une caisse on dessine l'image de la caisse
                     if (labyJeu.getLaby().getCaisse(i, j)) {
-                        gc.drawImage(imageCaisse, i * 60.5, j * 60.5);
+                        gc.drawImage(imageCaisse, i * 60 + 5, j * 60 + 5);
                     }
                 }
             }
 
             Perso perso = labyJeu.getLaby().getPj();
             //dessin du personnage
-            gc.drawImage(imagePersonnage, perso.x * 60.5, perso.y * 60);
+            gc.drawImage(imagePersonnage, perso.x * 60 + 10, perso.y * 60);
             //dessin de l'escalier si doit apparaitre
             if (labyJeu.getLaby().getEscalier() != null) {
                 if (labyJeu.getLaby().getEscalierAfficher()) {
