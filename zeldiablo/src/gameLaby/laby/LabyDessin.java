@@ -64,7 +64,7 @@ public class LabyDessin implements DessinJeu {
             gc.setFill(Color.GRAY);
             gc.fillRect(canvas.getWidth()/2-150,canvas.getHeight()/2-60,300,120);
             gc.setFill(Color.WHITE);
-            String fin = "Bravo! Vous avez gagner! En :" + FrameStats.frameCount;
+            String fin = "Bravo! Vous avez gagné ! En :" + FrameStats.frameCount;
             gc.fillText(fin,canvas.getWidth()/2-60,canvas.getHeight()/2,1000);
 
         }
