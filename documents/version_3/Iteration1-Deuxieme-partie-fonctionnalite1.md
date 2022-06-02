@@ -1,4 +1,4 @@
-1. Mur deplacable (caisse) (10.1) : MANGIN Florian et BAUBY Gaspard
+1. Mur deplacable (caisse) (10.1) : MANGIN Florian, BAUBY Gaspard et BERNARD Julien
 Descriptif
   - Le mur deplacable débute sur une case décrite dans le fichier labyrinthe.txt, ensuite le mur doit se deplacer
     lorsque le personnage le touche dans la direction du personnage et le mur n'est pas bloquer par un mur, 
@@ -14,7 +14,7 @@ Critère :
 
 
 
-2. Probleme de Sokoban (10.2) : BERNARD Julien et SIMONIN Enzo
+2. Probleme de Sokoban (10.2) : BERNARD Julien, SIMONIN Enzo et MANGIN Florian
 Descriptif : 
     - la partie se termine lorsque toutes les caisses sont sur des cases d'arrivées
 Critère de validation : 
