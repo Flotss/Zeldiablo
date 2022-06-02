@@ -1,0 +1,74 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+participant "main" as m
+participant "laby : Labyrinthe" as l
+participant "pj : Perso" as p
+participant "caisses : Caisse" as c
+participant "glace : Glace" as g
+participant "escalier : Escalier" as e
+participant "emplacementCaisses : EmplacementCaisses" as ep
+
+autonumber
+
+
+
+activate m
+
+create l
+m -> l : new Labyrinthe()
+activate l
+
+l --> l : chargerLabyrinthe()
+activate l
+
+create c
+l -> c : new Caisse(int x, int y)
+activate c
+l <-- c
+deactivate c
+
+create g
+l -> g : new Glace(int x, int y)
+activate g
+l <-- g
+deactivate g
+
+create ep
+l -> ep : new EmplacementCaisse(int x, int y)
+activate ep
+l <-- ep
+deactivate ep
+
+l -> ep : ajouter(int x, int y)
+activate ep
+l <-- ep
+deactivate ep
+
+l -> c : ajouter(int x, int y)
+activate c
+l <-- c
+deactivate c
+l -> g : ajouter(int x, int y)
+activate g
+l <-- g
+deactivate g
+
+create p
+l -> p : new Perso(int x, int y)
+activate p
+l <-- p
+deactivate p
+
+create e
+l -> e : new Escalier(int x, int y)
+activate e
+l <-- e
+deactivate e
+deactivate l
+
+m <-- l
+deactivate l
+
+
+
+@enduml

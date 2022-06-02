@@ -2,7 +2,9 @@
 
 class Labyrinthe{
     - murs : boolean[][]
-    + Labyrinthe(nom : String)
+    - nomFichiers : ArrayList<String>
+    + Labyrinthe(noms : ArrayList<String>)
+    + ChargerNouveauLabyrinthe()
     + getSuivant(x : int, y : int, action : String) : int[]
     + deplacerPerso(pj : Perso, direction : String)
     + deplacerCaisses(x : int, y : int, direction : String)
@@ -49,7 +51,21 @@ class Perso {
     + getX() : int
     + getY() : int
 }
+
+class Escalier {
+    - x : int
+    - y : int
+    - affiche : boolean
+    + Escalier(int x, int y)
+    + etrePresent(int x, int y)
+    + afficherEscalier()
+    + desafficherEscalier()
+    + etreAffiche(): boolean
+}
+
 Labyrinthe "*" --> "1" Perso : - pj
+
+Labyrinthe "*" --> "1" Escalier : - escalier
 
 Labyrinthe "*" --> "1" Caisses : - caisses
 
