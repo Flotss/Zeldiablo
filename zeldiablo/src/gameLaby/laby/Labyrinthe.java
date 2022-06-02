@@ -24,6 +24,7 @@ public class Labyrinthe {
     public static final char CAISSE = 'C';
     public static final char EMPLACEMENT_CAISSE = 'O';
     public static final char GLACEE = 'G';
+    public static final char ESCALIER = 'E';
 
     /**
      * constantes actions possibles
@@ -67,7 +68,7 @@ public class Labyrinthe {
     /**
      * L'escalier de l'etage
      */
-    //private Escalier escalier;
+    private Escalier escalier;
 
     /**
      * retourne la case suivante selon une actions
@@ -168,6 +169,10 @@ public class Labyrinthe {
                     case GLACEE:
                         this.glace.ajouter(colonne,numeroLigne);
                         break;
+                    case ESCALIER:
+                        this.murs[colonne][numeroLigne] = false;
+                        this.escalier = new Escalier(colonne, numeroLigne);
+                        break;
                     default:
                         throw new Error("caractere inconnu " + c);
                 }
@@ -187,7 +192,7 @@ public class Labyrinthe {
      *
      * @param action une des actions possibles
      */
-    public void deplacerPerso(String action) {
+    public void deplacerPerso(String action) throws IOException {
         //On repete le deplacement tant que la case sur laquelle le personnage se deplace est glacee (et non bloquée)
         boolean caseGlacee;
         do {
@@ -210,8 +215,19 @@ public class Labyrinthe {
                 // on met a jour personnage
                 this.pj.x = suivante[0];
                 this.pj.y = suivante[1];
+                if(escalier.etreAffiche()){
+                    if(escalier.etrePresent(this.pj.getX(),this.pj.getY())){
+                        this.chargerNouveauLabyrinthe();
+                        caseGlacee = false;
+                    }
+                }
             }
         } while (caseGlacee);
+        if (this.emplacementsCaisse.etreFini(this.caisses)){
+            this.escalier.afficherEscalier();
+        }else {
+            this.escalier.cacherEscalier();
+        }
     }
 
     /**
@@ -352,11 +368,19 @@ public class Labyrinthe {
     }
 
     /**
-     * Getter caisses
-     * @return caisses
+     * Getter personnage
+     * @return Perso
      */
     public Perso getPj() {
         return pj;
+    }
+
+    /**
+     * Getter Escalier
+     * @return Escalier
+     */
+    public Escalier getEscalier() {
+        return escalier;
     }
 
     /**
@@ -365,5 +389,9 @@ public class Labyrinthe {
      */
     public boolean[][] getMurs() {
         return murs;
+    }
+
+    public boolean getEscalierAfficher(){
+        return (escalier.etreAffiche());
     }
 }

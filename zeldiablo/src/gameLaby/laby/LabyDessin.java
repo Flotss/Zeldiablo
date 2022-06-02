@@ -61,15 +61,21 @@ public class LabyDessin implements DessinJeu {
 
             gc.setFill(Color.RED);
             gc.fillOval(perso.x * 60, perso.y * 60, 60, 60);
+            if(labyJeu.getLaby().getEscalierAfficher()){
+                Escalier e = labyJeu.getLaby().getEscalier();
+                gc.setFill(Color.VIOLET);
+                gc.fillRect(e.getX()*60, e.getY()*60, 60, 60);
+                }
+            }
         }
-        if(labyJeu.getLaby().etreFini()){
-            dernierUpdateFait = true;
-            gc.setFill(Color.GRAY);
-            gc.fillRect(canvas.getWidth()/2-150,canvas.getHeight()/2-60,300,120);
-            gc.setFill(Color.WHITE);
-            String fin = "Bravo! Vous avez gagné ! En :" + FrameStats.frameCount;
-            gc.fillText(fin,canvas.getWidth()/2-60,canvas.getHeight()/2,1000);
-
-        }
+//        if(labyJeu.getLaby().etreFini()){
+//            dernierUpdateFait = true;
+//            gc.setFill(Color.GRAY);
+//            gc.fillRect(canvas.getWidth()/2-150,canvas.getHeight()/2-60,300,120);
+//            gc.setFill(Color.WHITE);
+//            String fin = "Bravo! Vous avez gagné ! En :" + FrameStats.frameCount;
+//            gc.fillText(fin,canvas.getWidth()/2-60,canvas.getHeight()/2,1000);
+//
+//        }
     }
 }
