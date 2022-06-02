@@ -10,8 +10,13 @@ public class MainLaby {
     int pFPS = 10;
     ArrayList<String> nomsFichiers = new ArrayList<String>();
     nomsFichiers.add("labySimple/labySokobanGlace.txt");
+    //Version 2 etages
     nomsFichiers.add("labySimple/labySokoban2.txt");
-    nomsFichiers.add("labySimple/labySokoban3.txt");
+
+    //version 3 etages
+//    nomsFichiers.add("labySimple/labySokoban2Escalier.txt");
+//    nomsFichiers.add("labySimple/labySokoban3.txt");
+
     // creation des objets
     LabyJeu jeuLab = new LabyJeu(nomsFichiers);
     int width = jeuLab.getLaby().getLength()*60;
