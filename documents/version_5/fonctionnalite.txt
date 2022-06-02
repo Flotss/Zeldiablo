@@ -23,3 +23,12 @@
     - Nous allons lié cette fonctionnalité avec la fonctionnalité sokoban
     - Une fois les caisse déplacé sur tous les emplacements des caisses, un escalié
      s'ouvrira pour accédé aux prochain etage
+
+
+2. Affichage avec des sprites (11.1)
+- Descriptif :
+    - Nous allons utiliser des sprites pour afficher les objets du jeu à la place des cercles, rectangles, etc.
+- Critère de validation :
+    - Les murs, le sol, les caisses, les emplacement de caisse et le personnage doivent etre représenté par des sprites
+    - Les sprites doivent être chargés à l'initialisation du jeu
+    - Les sprites doivent être affichés à la bonne position
