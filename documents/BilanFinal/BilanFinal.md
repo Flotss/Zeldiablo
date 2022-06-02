@@ -23,6 +23,10 @@ nouvelle generation.
     - BAUBY Gaspard
     - MANGIN Florian
     - SIMONIN Enzo
+L'un des points les plus importants selon moi est l'affichage du labyrinthe avec des sprites (les murs, les caisses, les emplacements 
+de caisse) les images sont chargées une seule fois au debut de l'application et donc ne surcharge pas le programme (comme le jeu fonctionne
+avec 10 images par seconde elle serait chargées 10 fois par secondes). Les sprites rendent les jeu plus lisible et plus jouable.
+
 
 
 
