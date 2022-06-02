@@ -1,8 +1,10 @@
 package gameLaby.laby;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * classe labyrinthe. represente un labyrinthe avec
@@ -32,6 +34,11 @@ public class Labyrinthe {
     public static final String DROITE = "Droite";
 
     /**
+     * array list de tous les fichier
+     */
+    private ArrayList<String> nomFichiers;
+
+    /**
      * attribut du personnage
      */
     private Perso pj;
@@ -56,6 +63,11 @@ public class Labyrinthe {
      * les cases glacée du labyrinthe
      */
     private Glace glace;
+
+    /**
+     * L'escalier de l'etage
+     */
+    //private Escalier escalier;
 
     /**
      * retourne la case suivante selon une actions
@@ -94,10 +106,17 @@ public class Labyrinthe {
     /**
      * charge le labyrinthe
      *
-     * @param nom nom du fichier de labyrinthe
+     * @param noms nom du fichier de labyrinthe
      * @throws IOException probleme a la lecture / ouverture
      */
-    public Labyrinthe(String nom) throws IOException {
+    public Labyrinthe(ArrayList<String> noms) throws IOException {
+       this.nomFichiers = noms;
+       this.chargerNouveauLabyrinthe();
+    }
+
+    public void chargerNouveauLabyrinthe() throws IOException {
+        String nom = this.nomFichiers.get(0);
+        this.nomFichiers.remove(0);
         // ouvrir fichier
         FileReader fichier = new FileReader(nom);
         BufferedReader bfRead = new BufferedReader(fichier);
