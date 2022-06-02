@@ -1,5 +1,6 @@
 package gameLaby.laby;
 
+import gameLaby.laby.utils.Sprite;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -30,15 +31,19 @@ public class LabyDessin implements DessinJeu {
     public Image imageMur;
     public Image imageCaisse;
     public Image imageGlace;
+    public Image imagePerso;
+    public Image imageEscalier;
 
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
 
         // si les images n'ont pas ete chargees, on les charge et on indique que les images ont ete chargees
         if (!IMAGE_CHARGE) {
-            this.imageMur = new Image("file:resources/mur.png", 60, 60, false, false);
-            this.imageCaisse = new Image("file:resources/crate.png", 50, 50, false, false);
-            this.imageGlace = new Image("file:resources/glace.png", 60, 60, false, false);
+            this.imageMur = Sprite.IMAGE_MUR;
+            this.imageCaisse = Sprite.IMAGE_CRATE;
+            this.imageGlace = Sprite.IMAGE_GLACE;
+            this.imagePerso = Sprite.IMAGE_PERSO;
+            this.imageEscalier = Sprite.IMAGE_ESCALIER;
             IMAGE_CHARGE = true;
         }
 
@@ -75,13 +80,11 @@ public class LabyDessin implements DessinJeu {
 
             Perso perso = labyJeu.getLaby().getPj();
 
-            gc.setFill(Color.RED);
-            gc.fillOval(perso.x * 60, perso.y * 60, 60, 60);
+            gc.drawImage(imagePerso, perso.x * 60, perso.y * 60);
             if (labyJeu.getLaby().getEscalier() != null) {
                 if (labyJeu.getLaby().getEscalierAfficher()) {
                     Escalier e = labyJeu.getLaby().getEscalier();
-                    gc.setFill(Color.VIOLET);
-                    gc.fillRect(e.getX() * 60, e.getY() * 60, 60, 60);
+                    gc.drawImage(imageEscalier, e.getX() * 60, e.getY() * 60);
                 }
             } else {
                 if (labyJeu.getLaby().etreFini()) {
