@@ -9,12 +9,6 @@ import moteurJeu.DessinJeu;
 import moteurJeu.FrameStats;
 import moteurJeu.Jeu;
 
-import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
 
 public class LabyDessin implements DessinJeu {
 
