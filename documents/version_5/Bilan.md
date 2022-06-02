@@ -1,8 +1,10 @@
 ### Pendant l'itération 5 nous avons choisi 2 fonctionnalités :
 - Gestion d'un labyrinthe multi-étages, qui consiste à ajouter plusieurs étages au jeu et permettre au personnage de changer d'étage
   grâce à un étage lorsque l'étage actuel est fini c'est à dire lorsque toutes les caisses sont sur les emplacements d'arrivées.
+  Fait par Bauby Gaspard et Bernar Julien
   ces caisses peuvent être déplacé par le personnage lorsqu'il avance vers elles.
 - Affichage avec des sprites, qui consiste à changer les formes du labyrinthe par des images et rendre notre jeu plus attractif.
+  Fait par Mangin Florian et Simonin Enzo
 
 Nous avons réussi à concevoir et réaliser ces 2 fonctionnalités.
 
