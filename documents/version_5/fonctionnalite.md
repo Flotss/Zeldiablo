@@ -1,4 +1,4 @@
-1. Gestion d'un labyrinthe multi-étages (1.8): BERNARD Julien
+1. Gestion d'un labyrinthe multi-étages (1.8): BERNARD Julien et BAUBY Gaspard
 - Descriptif :
     - Le labyrinthe doit être constitué de plusieurs étages
     - Chaque étage doit correspondre a un niveau particulier
@@ -20,15 +20,15 @@
     étage possède un escalier qui descend à la même position dans l'étage supérieur
     (et inversement).
 - Remarque :
-    - Nous allons lié cette fonctionnalité avec la fonctionnalité sokoban
-    - Une fois les caisse déplacé sur tous les emplacements des caisses, un escalié
-     s'ouvrira pour accédé aux prochain etage
+    - Nous allons lier cette fonctionnalité avec la fonctionnalité sokoban
+    - Une fois les caisses déplacées sur tous les emplacements des caisses, un escalier
+     s'ouvrira pour accéder aux prochains étages
 
 
-2. Affichage avec des sprites (11.1)
+2. Affichage avec des sprites (11.1) : MANGIN Florian et SIMONIN Enzo
 - Descriptif :
     - Nous allons utiliser des sprites pour afficher les objets du jeu à la place des cercles, rectangles, etc.
 - Critère de validation :
-    - Les murs, le sol, les caisses, les emplacement de caisse et le personnage doivent etre représenté par des sprites
-    - Les sprites doivent être chargés à l'initialisation du jeu
+    - Les murs, le sol, les caisses, les emplacements de caisse et le personnage doivent être représenté par des sprites
+    - Les sprites doivent être chargé qu'une seule fois au début de l'application et donc le mettre en 
     - Les sprites doivent être affichés à la bonne position
