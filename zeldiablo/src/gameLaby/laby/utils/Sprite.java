@@ -3,6 +3,9 @@ package gameLaby.laby.utils;
 
 import javafx.scene.image.Image;
 
+/**
+ * classse Sprite qui permet d initialiser les images utilisees dans le labyrinthe
+ */
 public class Sprite {
   /**
    * Sprite de mur

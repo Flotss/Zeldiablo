@@ -63,6 +63,15 @@ class Escalier {
     + etreAffiche(): boolean
 }
 
+class Sprite {
+    {static} + MUR : Image
+    {static} + CAISSE : Image
+    {static} + GLACE : Image
+    {static} + PERSO : Image
+    {static} + SORTIE : Image
+    {static} + ESCALIER : Image
+}
+
 Labyrinthe "*" --> "1" Perso : - pj
 
 Labyrinthe "*" --> "1" Escalier : - escalier
