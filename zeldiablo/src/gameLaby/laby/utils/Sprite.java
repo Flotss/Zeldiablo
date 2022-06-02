@@ -22,7 +22,7 @@ public class Sprite {
   /**
    * Sprite du personnage
    */
-  public static Image IMAGE_PERSO = new Image("file:resources/personnage.png", 60, 60, false, false);
+  public static Image IMAGE_PERSO = new Image("file:resources/personnage.png", 60, 60, true, false);
 
   /**
    * Sprite de la sortie

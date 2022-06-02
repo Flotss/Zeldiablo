@@ -31,7 +31,8 @@ public class LabyDessin implements DessinJeu {
     public Image imageMur;
     public Image imageCaisse;
     public Image imageGlace;
-    public Image imagePerso;
+    public Image imagePersonnage;
+    public Image imageSortie;
     public Image imageEscalier;
 
     @Override
@@ -42,7 +43,8 @@ public class LabyDessin implements DessinJeu {
             this.imageMur = Sprite.IMAGE_MUR;
             this.imageCaisse = Sprite.IMAGE_CRATE;
             this.imageGlace = Sprite.IMAGE_GLACE;
-            this.imagePerso = Sprite.IMAGE_PERSO;
+            this.imagePersonnage = Sprite.IMAGE_PERSO;
+            this.imageSortie = Sprite.IMAGE_SORTIE;
             this.imageEscalier = Sprite.IMAGE_ESCALIER;
             IMAGE_CHARGE = true;
         }
@@ -80,7 +82,7 @@ public class LabyDessin implements DessinJeu {
 
             Perso perso = labyJeu.getLaby().getPj();
 
-            gc.drawImage(imagePerso, perso.x * 60, perso.y * 60);
+            gc.drawImage(imagePersonnage, perso.x * 60.5, perso.y * 60);
             if (labyJeu.getLaby().getEscalier() != null) {
                 if (labyJeu.getLaby().getEscalierAfficher()) {
                     Escalier e = labyJeu.getLaby().getEscalier();
