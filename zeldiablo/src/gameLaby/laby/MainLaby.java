@@ -11,6 +11,7 @@ public class MainLaby {
     ArrayList<String> nomsFichiers = new ArrayList<String>();
     nomsFichiers.add("labySimple/labySokobanGlace.txt");
     nomsFichiers.add("labySimple/labySokoban2.txt");
+    nomsFichiers.add("labySimple/labySokoban3.txt");
     // creation des objets
     LabyJeu jeuLab = new LabyJeu(nomsFichiers);
     int width = jeuLab.getLaby().getLength()*60;
