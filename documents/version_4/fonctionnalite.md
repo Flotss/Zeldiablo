@@ -9,7 +9,7 @@
 - Remarque :
   - Il faut faire attention au cas où l'on pousse le mur sur une case glacée et un mur derriere
 
-2. Propulsion de mur déplaçable (10.4 : Bernard Julien et MANGIN Florian
+2. Propulsion de mur déplaçable (10.4) : Bernard Julien et MANGIN Florian
 - Descriptif :
   - le joueur doit disposer d'une touche pour propulser les murs déplaçables (combiné avec une touche de déplacement)
   - le mur déplaçable se déplace jusqu'à atteindre un mur
