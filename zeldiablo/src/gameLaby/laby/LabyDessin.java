@@ -3,31 +3,39 @@ package gameLaby.laby;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import moteurJeu.DessinJeu;
 import moteurJeu.FrameStats;
 import moteurJeu.Jeu;
 
-import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 public class LabyDessin implements DessinJeu {
 
     public static boolean dernierUpdateFait = false;
+    public static boolean IMAGE_CHARGE = false;
+
+    public Image imageMur;
+    public Image imageCaisse;
+    public Image imageGlace;
 
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
 
+        if(!IMAGE_CHARGE){
+            this.imageMur = new Image("file:resources/mur.png",60,60,false,false);
+            this.imageCaisse = new Image("file:resources/crate.png",50,50,false,false);
+            this.imageGlace = new Image("file:resources/glace.png",60,60,false,false);
+            IMAGE_CHARGE = true;
+        }
+
         LabyJeu labyJeu = (LabyJeu) jeu;
         final GraphicsContext gc = canvas.getGraphicsContext2D();
-
-        Image imageMur = new Image("file:resources/mur.png",60,60,false,false);
-        Image imageCaisse = new Image("file:resources/crate.png",50,50,false,false);
-        Image imageGlace = new Image("file:resources/glace.png",60,60,false,false);
 
         if (!dernierUpdateFait) {
             gc.setFill(Color.LIGHTGRAY);

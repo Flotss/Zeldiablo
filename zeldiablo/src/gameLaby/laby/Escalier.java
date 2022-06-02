@@ -43,5 +43,15 @@ public class Escalier {
         return this.affiche;
     }
 
+    //getx
+    public int getX() {
+        return this.x;
+    }
+
+    //gety
+    public int getY() {
+        return this.y;
+    }
+
 
 }
