@@ -3,13 +3,16 @@ package gameLaby.laby;
 import moteurJeu.MoteurJeu;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainLaby {
   public static void main(String[] args) throws IOException {
     int pFPS = 10;
-
+    ArrayList<String> nomsFichiers = new ArrayList<String>();
+    nomsFichiers.add("labySimple/labySokobanGlace.txt");
+    nomsFichiers.add("labySimple/labySokoban2.txt");
     // creation des objets
-    LabyJeu jeuLab = new LabyJeu("labySimple/labySokobanGlace.txt");
+    LabyJeu jeuLab = new LabyJeu(nomsFichiers);
     int width = jeuLab.getLaby().getLength()*60;
     int height = jeuLab.getLaby().getLengthY()*60;
     LabyDessin dessinLab = new LabyDessin();

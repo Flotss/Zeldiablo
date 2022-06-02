@@ -16,6 +16,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 // copied from: https://gist.github.com/james-d/8327842
 // and modified to use canvas drawing instead of shapes
 
@@ -89,7 +91,7 @@ public class MoteurJeu extends Application {
     /**
      * creation de l'application avec juste un canvas et des statistiques
      */
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         // initialisation du canvas de dessin et du container
         final Canvas canvas = new Canvas();
         final Pane canvasContainer = new Pane(canvas);
@@ -147,7 +149,7 @@ public class MoteurJeu extends Application {
      *
      * @param canvas le canvas sur lequel on est synchronise
      */
-    private void startAnimation(final Canvas canvas) {
+    private void startAnimation(final Canvas canvas) throws IOException {
         // stocke la derniere mise e jour
         final LongProperty lastUpdateTime = new SimpleLongProperty(0);
 
@@ -169,7 +171,11 @@ public class MoteurJeu extends Application {
                 // si le temps ecoule depasse le necessaire pour FPS souhaite
                 if (dureeEnMilliSecondes > dureeFPS) {
                     // met a jour le jeu en passant les touches appuyees
-                    jeu.update(dureeEnMilliSecondes / 1_000., controle);
+                    try {
+                        jeu.update(dureeEnMilliSecondes / 1_000., controle);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                     // dessine le jeu
                     dessin.dessinerJeu(jeu, canvas);

@@ -1,7 +1,7 @@
 package gameLaby.laby;
 
 public class Escalier {
-    private int x,y;
+    private int x, y;
     private boolean affiche;
 
 
@@ -13,6 +13,7 @@ public class Escalier {
 
     /**
      * Methode qui verifie si l'escalier est sur les coordonnees
+     *
      * @param x coordonnee x
      * @param y coordonnee y
      * @return true si l'escalier est sur les coordonnees
@@ -37,18 +38,27 @@ public class Escalier {
 
     /**
      * Methode qui verifie si l escalier est affiche
+     *
      * @return true si l escalier est affiche
      */
     public boolean etreAffiche() {
         return this.affiche;
     }
 
-    //getx
+    /**
+     * retourne la coordonnee x
+     *
+     * @return
+     */
     public int getX() {
         return this.x;
     }
 
-    //gety
+    /**
+     * retourne la coordonnee y
+     *
+     * @return
+     */
     public int getY() {
         return this.y;
     }

@@ -1,8 +1,10 @@
 package gameLaby.laby;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * classe labyrinthe. represente un labyrinthe avec
@@ -22,6 +24,7 @@ public class Labyrinthe {
     public static final char CAISSE = 'C';
     public static final char EMPLACEMENT_CAISSE = 'O';
     public static final char GLACEE = 'G';
+    public static final char ESCALIER = 'E';
 
     /**
      * constantes actions possibles
@@ -30,6 +33,11 @@ public class Labyrinthe {
     public static final String BAS = "Bas";
     public static final String GAUCHE = "Gauche";
     public static final String DROITE = "Droite";
+
+    /**
+     * array list de tous les fichier
+     */
+    private ArrayList<String> nomFichiers;
 
     /**
      * attribut du personnage
@@ -56,6 +64,11 @@ public class Labyrinthe {
      * les cases glacée du labyrinthe
      */
     private Glace glace;
+
+    /**
+     * L'escalier de l'etage
+     */
+    private Escalier escalier;
 
     /**
      * retourne la case suivante selon une actions
@@ -94,10 +107,17 @@ public class Labyrinthe {
     /**
      * charge le labyrinthe
      *
-     * @param nom nom du fichier de labyrinthe
+     * @param noms nom du fichier de labyrinthe
      * @throws IOException probleme a la lecture / ouverture
      */
-    public Labyrinthe(String nom) throws IOException {
+    public Labyrinthe(ArrayList<String> noms) throws IOException {
+       this.nomFichiers = noms;
+       this.chargerNouveauLabyrinthe();
+    }
+
+    public void chargerNouveauLabyrinthe() throws IOException {
+        String nom = this.nomFichiers.get(0);
+        this.nomFichiers.remove(0);
         // ouvrir fichier
         FileReader fichier = new FileReader(nom);
         BufferedReader bfRead = new BufferedReader(fichier);
@@ -121,7 +141,7 @@ public class Labyrinthe {
         // stocke les indices courants
         int numeroLigne = 0;
 
-
+        this.escalier = null;
         // parcours le fichier
         while (ligne != null) {
             // parcours de la ligne
@@ -149,6 +169,10 @@ public class Labyrinthe {
                     case GLACEE:
                         this.glace.ajouter(colonne,numeroLigne);
                         break;
+                    case ESCALIER:
+                        this.murs[colonne][numeroLigne] = false;
+                        this.escalier = new Escalier(colonne, numeroLigne);
+                        break;
                     default:
                         throw new Error("caractere inconnu " + c);
                 }
@@ -168,7 +192,7 @@ public class Labyrinthe {
      *
      * @param action une des actions possibles
      */
-    public void deplacerPerso(String action) {
+    public void deplacerPerso(String action) throws IOException {
         //On repete le deplacement tant que la case sur laquelle le personnage se deplace est glacee (et non bloquée)
         boolean caseGlacee;
         do {
@@ -191,8 +215,23 @@ public class Labyrinthe {
                 // on met a jour personnage
                 this.pj.x = suivante[0];
                 this.pj.y = suivante[1];
+                if(escalier != null) {
+                    if (escalier.etreAffiche()) {
+                        if (escalier.etrePresent(this.pj.getX(), this.pj.getY())) {
+                            this.chargerNouveauLabyrinthe();
+                            caseGlacee = false;
+                        }
+                    }
+                }
             }
         } while (caseGlacee);
+        if (escalier != null) {
+            if (this.emplacementsCaisse.etreFini(this.caisses)) {
+                this.escalier.afficherEscalier();
+            } else {
+                this.escalier.cacherEscalier();
+            }
+        }
     }
 
     /**
@@ -333,11 +372,19 @@ public class Labyrinthe {
     }
 
     /**
-     * Getter caisses
-     * @return caisses
+     * Getter personnage
+     * @return Perso
      */
     public Perso getPj() {
         return pj;
+    }
+
+    /**
+     * Getter Escalier
+     * @return Escalier
+     */
+    public Escalier getEscalier() {
+        return escalier;
     }
 
     /**
@@ -346,5 +393,9 @@ public class Labyrinthe {
      */
     public boolean[][] getMurs() {
         return murs;
+    }
+
+    public boolean getEscalierAfficher(){
+        return (escalier.etreAffiche());
     }
 }

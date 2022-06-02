@@ -4,6 +4,7 @@ import moteurJeu.Clavier;
 import moteurJeu.Jeu;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static gameLaby.laby.Labyrinthe.*;
 
@@ -15,7 +16,7 @@ public class LabyJeu implements Jeu {
   private Labyrinthe laby;
 
 
-  public LabyJeu(String nomFichier) throws IOException {
+  public LabyJeu(ArrayList<String> nomFichier) throws IOException {
     this.laby = new Labyrinthe(nomFichier);
   }
 
@@ -26,7 +27,7 @@ public class LabyJeu implements Jeu {
    * @param clavier  objet contenant l'état du clavier'
    */
   @Override
-  public void update(double secondes, Clavier clavier) {
+  public void update(double secondes, Clavier clavier) throws IOException {
     if (clavier.haut) {
       laby.deplacerPerso(HAUT);
     } else if (clavier.bas) {
