@@ -103,7 +103,6 @@ public class Labyrinthe {
     }
 
 
-
     /**
      * charge le labyrinthe
      *
@@ -111,10 +110,15 @@ public class Labyrinthe {
      * @throws IOException probleme a la lecture / ouverture
      */
     public Labyrinthe(ArrayList<String> noms) throws IOException {
-       this.nomFichiers = noms;
-       this.chargerNouveauLabyrinthe();
+        this.nomFichiers = noms;
+        this.chargerNouveauLabyrinthe();
     }
 
+    /**
+     * charge un nouveau labyrinthe
+     *
+     * @throws IOException probleme a la lecture / ouverture
+     */
     public void chargerNouveauLabyrinthe() throws IOException {
         String nom = this.nomFichiers.get(0);
         this.nomFichiers.remove(0);
@@ -132,8 +136,9 @@ public class Labyrinthe {
         this.murs = new boolean[nbColonnes][nbLignes];
         this.caisses = new Caisses(nbColonnes, nbLignes);
         this.pj = null;
-        this.glace = new Glace(nbColonnes,nbLignes);
+        this.glace = new Glace(nbColonnes, nbLignes);
         this.emplacementsCaisse = new EmplacementsCaisse(nbColonnes, nbLignes);
+        this.escalier = null;
 
         // lecture des cases
         String ligne = bfRead.readLine();
@@ -141,7 +146,6 @@ public class Labyrinthe {
         // stocke les indices courants
         int numeroLigne = 0;
 
-        this.escalier = null;
         // parcours le fichier
         while (ligne != null) {
             // parcours de la ligne
@@ -167,10 +171,12 @@ public class Labyrinthe {
                         this.pj = new Perso(colonne, numeroLigne);
                         break;
                     case GLACEE:
-                        this.glace.ajouter(colonne,numeroLigne);
+                        this.glace.ajouter(colonne, numeroLigne);
                         break;
                     case ESCALIER:
+                        // pas de mur
                         this.murs[colonne][numeroLigne] = false;
+                        // ajoute escalier
                         this.escalier = new Escalier(colonne, numeroLigne);
                         break;
                     default:
@@ -200,10 +206,10 @@ public class Labyrinthe {
             int[] courante = {this.pj.x, this.pj.y};
             // calcule case suivante
             int[] suivante = getSuivant(courante[0], courante[1], action);
-            caseGlacee = this.glace.etrePresent(suivante[0],suivante[1]);
+            caseGlacee = this.glace.etrePresent(suivante[0], suivante[1]);
 
-            if (this.caisses.etrePresent(suivante[0],suivante[1])) {
-                if (caseGlacee){
+            if (this.caisses.etrePresent(suivante[0], suivante[1])) {
+                if (caseGlacee) {
                     //Si la case derriere la caisse est bloquée, on ne pourra pas pousser plus la caisse donc on ne glissera plus
                     caseGlacee = caseDisponible(getSuivant(suivante[0], suivante[1], action)[0], getSuivant(suivante[0], suivante[1], action)[1]);
                 }
@@ -211,13 +217,15 @@ public class Labyrinthe {
                 deplacerCaisse(suivante[0], suivante[1], action);
             }
             // si c'est pas un mur, on effectue le deplacement
-            if (!this.murs[suivante[0]][suivante[1]] && !caisses.etrePresent(suivante[0],suivante[1])) {
+            if (!this.murs[suivante[0]][suivante[1]] && !caisses.etrePresent(suivante[0], suivante[1])) {
                 // on met a jour personnage
                 this.pj.x = suivante[0];
                 this.pj.y = suivante[1];
-                if(escalier != null) {
+                // s il y a un escalier, si l escalier est affiche et si le perso est sur l escalier
+                if (escalier != null) {
                     if (escalier.etreAffiche()) {
                         if (escalier.etrePresent(this.pj.getX(), this.pj.getY())) {
+                            //On charge le laby suivant
                             this.chargerNouveauLabyrinthe();
                             caseGlacee = false;
                         }
@@ -225,7 +233,9 @@ public class Labyrinthe {
                 }
             }
         } while (caseGlacee);
+        //s il y a un escalier
         if (escalier != null) {
+            //Si le laby est fini on definit l affichage de l escalier
             if (this.emplacementsCaisse.etreFini(this.caisses)) {
                 this.escalier.afficherEscalier();
             } else {
@@ -243,7 +253,7 @@ public class Labyrinthe {
      */
     public void deplacerCaisse(int x, int y, String direction) {
         int[] suivante = getSuivant(x, y, direction);
-        int[] precedente = {x,y};
+        int[] precedente = {x, y};
         boolean caseGlacee;
         do {
             // calcule case suivante
@@ -251,12 +261,12 @@ public class Labyrinthe {
 
             // si c'est pas un mur, on effectue le deplacement
             if (caseDisponible(suivante[0], suivante[1])) {
-                caseGlacee = this.glace.etrePresent(suivante[0],suivante[1]);
+                caseGlacee = this.glace.etrePresent(suivante[0], suivante[1]);
                 // on met a jour la caisse
                 this.caisses.deplacer(precedente[0], precedente[1], suivante[0], suivante[1]);
             }
             precedente = suivante;
-            suivante = getSuivant(suivante[0],suivante[1],direction);
+            suivante = getSuivant(suivante[0], suivante[1], direction);
         } while (caseGlacee);
     }
 
@@ -271,14 +281,14 @@ public class Labyrinthe {
         int[] courante = {this.pj.x, this.pj.y};
         // calcule case suivante
         int[] precedente = getSuivant(courante[0], courante[1], direction);
-        int[] suivante =  getSuivant(precedente[0], precedente[1], direction);
+        int[] suivante = getSuivant(precedente[0], precedente[1], direction);
 
 
-        if(this.caisses.etrePresent(precedente[0],precedente[1])) {
+        if (this.caisses.etrePresent(precedente[0], precedente[1])) {
             // si c'est pas un mur, on effectue le deplacement
             while (caseDisponible(suivante[0], suivante[1])) {
                 // on met a jour la caisse
-                this.caisses.deplacer(precedente[0],precedente[1],suivante[0],suivante[1]);
+                this.caisses.deplacer(precedente[0], precedente[1], suivante[0], suivante[1]);
                 // calcule case suivante
                 precedente = suivante;
                 suivante = getSuivant(suivante[0], suivante[1], direction);
@@ -296,12 +306,13 @@ public class Labyrinthe {
      * @return true si la case est disponible
      */
     public boolean caseDisponible(int x, int y) {
-        return !this.murs[x][y] && !this.caisses.etrePresent(x,y);
+        return !this.murs[x][y] && !this.caisses.etrePresent(x, y);
     }
 
 
     /**
      * Methode qui renvoie si le jeu est fini
+     *
      * @return vrai si toutes les caisses sont sur les emplacements de caisse
      */
     public boolean etreFini() {
@@ -344,6 +355,7 @@ public class Labyrinthe {
 
     /**
      * Getter Caisse de la position (x,y)
+     *
      * @param x Coordonnee x
      * @param y Coordonnee y
      * @return true si la case est une caisse
@@ -354,17 +366,19 @@ public class Labyrinthe {
 
     /**
      * Getter glace de la position (x,y)
+     *
      * @param x Coordonnee x
      * @param y Coordonnee y
      * @return true si la case est glacee
      */
     public boolean getGlace(int x, int y) {
-        return this.glace.etrePresent(x,y);
+        return this.glace.etrePresent(x, y);
     }
 
 
     /**
      * Getter emplacementCaisse
+     *
      * @return emplacementCaisse
      */
     public EmplacementsCaisse getEmplacementsCaisse() {
@@ -373,6 +387,7 @@ public class Labyrinthe {
 
     /**
      * Getter personnage
+     *
      * @return Perso
      */
     public Perso getPj() {
@@ -381,6 +396,7 @@ public class Labyrinthe {
 
     /**
      * Getter Escalier
+     *
      * @return Escalier
      */
     public Escalier getEscalier() {
@@ -389,13 +405,19 @@ public class Labyrinthe {
 
     /**
      * Getter des murs
+     *
      * @return Les murs du labyrinthe
      */
     public boolean[][] getMurs() {
         return murs;
     }
 
-    public boolean getEscalierAfficher(){
+    /**
+     * Getter de l'escalier
+     *
+     * @return Si l'escalier est affiche
+     */
+    public boolean getEscalierAfficher() {
         return (escalier.etreAffiche());
     }
 }
