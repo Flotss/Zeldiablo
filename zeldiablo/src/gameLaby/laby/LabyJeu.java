@@ -27,7 +27,7 @@ public class LabyJeu implements Jeu {
    * @param clavier  objet contenant l'état du clavier'
    */
   @Override
-  public void update(double secondes, Clavier clavier) {
+  public void update(double secondes, Clavier clavier) throws IOException {
     if (clavier.haut) {
       laby.deplacerPerso(HAUT);
     } else if (clavier.bas) {

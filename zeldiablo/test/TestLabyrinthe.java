@@ -8,10 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestLabyrinthe {
+
     @Test
     public void test01_methodes() throws IOException {
+        ArrayList<String> fichier= new ArrayList<>();
+        fichier.add("labySimple/labySokoban.txt");
         // Initialisation
-        Labyrinthe laby = new Labyrinthe("labySimple/labySokoban.txt");
+        Labyrinthe laby = new Labyrinthe(fichier);
 
         // Methode a teste
         laby.deplacerPerso("Haut");
@@ -22,8 +25,10 @@ public class TestLabyrinthe {
     }
     @Test
     public void test02_caseDisponible() throws IOException {
+        ArrayList<String> fichier= new ArrayList<>();
+        fichier.add("labySimple/labySokoban.txt");
         // Initialisation
-        Labyrinthe laby = new Labyrinthe("labySimple/labySokoban.txt");
+        Labyrinthe laby = new Labyrinthe(fichier);
 
         //Verification
         assertTrue(laby.caseDisponible(2,1)); // case libre
@@ -34,8 +39,10 @@ public class TestLabyrinthe {
 
     @Test
     public void test03_deplacerCaisse() throws IOException {
+        ArrayList<String> fichier= new ArrayList<>();
+        fichier.add("labySimple/labySokoban.txt");
         // Initialisation
-        Labyrinthe laby = new Labyrinthe("labySimple/labySokoban.txt");
+        Labyrinthe laby = new Labyrinthe(fichier);
 
         //Verification de la position de la caisse
         assertTrue(laby.getCaisse(17, 10));
@@ -51,8 +58,10 @@ public class TestLabyrinthe {
 
     @Test
     public void test04_deplacerPersoEtCaisse() throws IOException {
-      // Initialisation
-      Labyrinthe laby = new Labyrinthe("labySimple/labySokoban.txt");
+        ArrayList<String> fichier= new ArrayList<>();
+        fichier.add("labySimple/labySokoban.txt");
+        // Initialisation
+      Labyrinthe laby = new Labyrinthe(fichier);
 
       //Methode a tester
       for (int i = 0; i< 2; i++) laby.deplacerPerso("Haut");
@@ -64,8 +73,10 @@ public class TestLabyrinthe {
 
   @Test
   public void test05_emplacementSortieCaisse() throws IOException {
+      ArrayList<String> fichier= new ArrayList<>();
+      fichier.add("labySimple/labySokoban.txt");
         // Initialisation
-      Labyrinthe laby = new Labyrinthe("labySimple/labySokoban.txt");
+      Labyrinthe laby = new Labyrinthe(fichier);
 
       //Verification de la position des sorties
       assertTrue(laby.getEmplacementsCaisse().etrePresent(6,1),"les coordonnes 6/1 devraient etre un emplacement de caisse");
@@ -78,8 +89,10 @@ public class TestLabyrinthe {
 
   @Test
   public void test06_etreFini() throws IOException {
+      ArrayList<String> fichier= new ArrayList<>();
+      fichier.add("labySimple/labySokobanTestFini.txt");
     // Initialisation
-    Labyrinthe laby = new Labyrinthe("labySimple/labySokobanTestFini.txt");
+    Labyrinthe laby = new Labyrinthe(fichier);
     laby.deplacerPerso("Haut");
     laby.deplacerPerso("Haut");
 
@@ -89,8 +102,10 @@ public class TestLabyrinthe {
 
     @Test
     public void test07_etreFini_Non() throws IOException {
+        ArrayList<String> fichier= new ArrayList<>();
+        fichier.add("labySimple/labySokobanTestFini.txt");
         // Initialisation
-        Labyrinthe laby = new Labyrinthe("labySimple/labySokobanTestFini.txt");
+        Labyrinthe laby = new Labyrinthe(fichier);
 
         //Verification
         assertFalse(laby.etreFini(), "Le labyrinthe ne devrait pas etre fini");
@@ -98,8 +113,10 @@ public class TestLabyrinthe {
 
     @Test
     public void test08_emplacementGlace() throws IOException {
+        ArrayList<String> fichier= new ArrayList<>();
+        fichier.add("labySimple/labySokobanGlace.txt");
         // Initialisation
-        Labyrinthe laby = new Labyrinthe("labySimple/labySokobanGlace.txt");
+        Labyrinthe laby = new Labyrinthe(fichier);
 
         //Verification de la position des sorties
         for(int i = 7 ; i <= 9 ; i++){
@@ -109,4 +126,5 @@ public class TestLabyrinthe {
             assertTrue(laby.getGlace(i,12),"les coordonnes "+i+",12 devraient etre un emplacement de glace");
         }
     }
+
 }

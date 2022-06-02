@@ -141,7 +141,7 @@ public class Labyrinthe {
         // stocke les indices courants
         int numeroLigne = 0;
 
-
+        this.escalier = null;
         // parcours le fichier
         while (ligne != null) {
             // parcours de la ligne
@@ -215,18 +215,22 @@ public class Labyrinthe {
                 // on met a jour personnage
                 this.pj.x = suivante[0];
                 this.pj.y = suivante[1];
-                if(escalier.etreAffiche()){
-                    if(escalier.etrePresent(this.pj.getX(),this.pj.getY())){
-                        this.chargerNouveauLabyrinthe();
-                        caseGlacee = false;
+                if(escalier != null) {
+                    if (escalier.etreAffiche()) {
+                        if (escalier.etrePresent(this.pj.getX(), this.pj.getY())) {
+                            this.chargerNouveauLabyrinthe();
+                            caseGlacee = false;
+                        }
                     }
                 }
             }
         } while (caseGlacee);
-        if (this.emplacementsCaisse.etreFini(this.caisses)){
-            this.escalier.afficherEscalier();
-        }else {
-            this.escalier.cacherEscalier();
+        if (escalier != null) {
+            if (this.emplacementsCaisse.etreFini(this.caisses)) {
+                this.escalier.afficherEscalier();
+            } else {
+                this.escalier.cacherEscalier();
+            }
         }
     }
 
