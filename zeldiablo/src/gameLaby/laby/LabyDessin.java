@@ -2,6 +2,8 @@ package gameLaby.laby;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -22,6 +24,10 @@ public class LabyDessin implements DessinJeu {
 
         LabyJeu labyJeu = (LabyJeu) jeu;
         final GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        ImageView imageMur = new ImageView(new Image("src/resources/mur.png"));
+        imageMur.setFitWidth(60);
+        imageMur.setFitHeight(60);
 
         if (!dernierUpdateFait) {
             gc.setFill(Color.LIGHTGRAY);
@@ -45,7 +51,7 @@ public class LabyDessin implements DessinJeu {
                     }
                     if (labyJeu.getLaby().getMur(i, j)) {
                         gc.setFill(Color.BLACK);
-                        gc.fillRect(i * 60, j * 60, 60, 60);
+                        gc.drawImage(imageMur.getImage(), i * 60, j * 60);
                     }
                     if (labyJeu.getLaby().getCaisse(i, j)) {
                         gc.setFill(Color.BROWN);
