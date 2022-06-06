@@ -5,7 +5,7 @@
 
 3. Sol verglacé (10.3) : Bernard Julien et MANGIN Florian
 
-4. Propulsion de mur déplaçable (10.4) : Bernard Julien et MANGIN Florian
+4. Propulsion de mur déplaçable (10.4) : Bernard Julien
 
 5. Gestion d'un labyrinthe multi-étages (1.8): BERNARD Julien et BAUBY Gaspard
 
@@ -31,3 +31,24 @@ avec 10 images par seconde, elle serait chargée 10 fois par secondes). Les spri
 
 
 - Conclusion/bilan
+Durant ce projet, nous devions réaliser une application de labyrinthe avec diverses fonctionnalités. 
+Nous avons choisi de nous orienter vers un jeu sokoban avec étages. Nous avons réussi toutes les fonctionnalitées, et
+leurs critères, envisagées. Une fois toutes les fonctionnalités finis, nous n'avons constaté aucuns bug et tous les
+critères de validation sont bien respecté.
+- Observations sur le projet :
+Durant ce projet, nous avons fait quelques erreurs de conception, notamment sur le choix de représentation des cases.
+Nous avons choisi de représenté toutes les formes de cases séparément alors que nous aurions pu toutes les rassembler
+sous une même classe mère et ainsi avoir un unique tableau de "cases" contenant différents type de cases. 
+Cependant, nos fonctionnalités fonctionnent correctement et est pour le moment pas trop chargé (ce qui aurait surement
+changé avec plusieurs titrations supplémentaires).
+Nous avons aussi fait quelques erreurs sur les diagrammes de classes et de séquences qui aurait pu être nettement 
+simplifiés, notamment les diagrammes de séquences. En effet, lors de la réalisation des diagrammes de séquences,
+j'ai voulu représenter ce que faisait la classe précisément si peut que le diagramme de classe se transforme globalement
+en algorithme ce qui est un problème pour la lecture de ce dernier.
+
+
+
+
+
+Remarques:
+Le diagramme de classe final se trouve dans la version 5
