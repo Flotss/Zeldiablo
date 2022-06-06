@@ -2,13 +2,13 @@
 - Descriptif :
     - Le labyrinthe doit être constitué de plusieurs étages
     - Chaque étage doit correspondre a un niveau particulier
-    - Pour changé d'étages on utilise des escaliers
+    - Pour changer d'étages, on utilise des escaliers
 - Critères de validation :
     - Les escaliers sont des cases traversables par le héros et les monstres.
     - Lorsque le héros se trouve sur un escalier, il peut l'activer et il change alors de
     niveau.
     - Les monstres du niveau où le héros se trouvait avant l'escalier n'apparaissent pas
-    dans l'étage supérieur/inférieur. Ils restent à leur position et conservent leur points
+    dans l'étage supérieur/inférieur. Ils restent à leur position et conservent leurs points
     de vie.
     - De nouveaux monstres peuvent être présents à l'étage supérieur en fonction du
     descriptif du niveau.
