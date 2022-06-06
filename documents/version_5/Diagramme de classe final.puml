@@ -43,7 +43,7 @@ class EmplacementsCaisse {
 }
 
 class Glace {
-    + Glace(int x, int y)
+    + Glace(x : int, y : int)
 }
 
 class Perso {
@@ -59,8 +59,8 @@ class Escalier <<Nouv>>{
     - x : int
     - y : int
     - affiche : boolean
-    + Escalier(int x, int y)
-    + etrePresent(int x, int y)
+    + Escalier(x : int, y : int)
+    + etrePresent(x : int, y : int) : boolean
     + afficherEscalier()
     + cacherEscalier()
     + etreAffiche(): boolean
