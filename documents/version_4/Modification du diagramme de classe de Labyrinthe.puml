@@ -1,4 +1,7 @@
 @startuml
+skinparam class{
+  BackgroundColor<<Nouv>> Pink
+}
 
 class Labyrinthe{
     - murs : boolean[][]
@@ -37,7 +40,7 @@ class EmplacementsCaisse {
     + etreFini(c : Caisses): boolean
 }
 
-class Glace {
+class Glace <<Nouv>>{
     + Glace(int x, int y)
 }
 

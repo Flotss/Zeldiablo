@@ -1,4 +1,7 @@
 @startuml
+skinparam class{
+  BackgroundColor<<Nouv>> Pink
+}
 
 class Labyrinthe{
     - murs : boolean[][]
@@ -52,7 +55,7 @@ class Perso {
     + getY() : int
 }
 
-class Escalier {
+class Escalier <<Nouv>>{
     - x : int
     - y : int
     - affiche : boolean
@@ -63,7 +66,7 @@ class Escalier {
     + etreAffiche(): boolean
 }
 
-class Sprite {
+class Sprite <<Nouv>>{
     {static} + MUR : Image
     {static} + CAISSE : Image
     {static} + GLACE : Image

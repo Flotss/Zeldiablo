@@ -1,6 +1,10 @@
 @startuml
+skinparam class{
+  BackgroundColor<<Nouv>> Pink
+}
 
-class Labyrinthe{
+
+class Labyrinthe {
     - murs : boolean[][]
     + Labyrinthe(nom : String)
     + getSuivant(x : int, y : int, action : String) : int[]
@@ -17,7 +21,7 @@ class Labyrinthe{
     + getPj() : Perso
 }
 
-class Cases{
+class Cases <<Nouv>>{
     - pos: boolean[][]
     + Cases(x : int, y : int)
     + ajouter(int : x, int : y)
@@ -25,12 +29,12 @@ class Cases{
     + getPos() : int
 }
 
-class Caisses {
+class Caisses <<Nouv>>{
     + Caisses(x : int, y : int)
     + deplacer(x : int, y : int, dx : int, dy : int): boolean
 }
 
-class EmplacementsCaisse {
+class EmplacementsCaisse <<Nouv>>{
     + EmplacementCaisses(x : int, y : int)
     + etreFini(c : Caisses): boolean
 }
