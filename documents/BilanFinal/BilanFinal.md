@@ -48,6 +48,6 @@ en algorithme ce qui est un problème pour la lecture de ce dernier.
 
 
 
-Remarques :\n
+Remarques :
 Dans les digrammes de classe je n'ai pas réussis à changé la couleur du texte des nouvelles méthodes.
 Le diagramme de classe final se trouve dans la version 5
