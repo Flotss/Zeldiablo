@@ -24,8 +24,8 @@ class Labyrinthe {
 class Cases <<Nouv>>{
     - pos: boolean[][]
     + Cases(x : int, y : int)
-    + ajouter(int : x, int : y)
-    + etrePresent(int : x, int : y): boolean
+    + ajouter(x : int, y : int)
+    + etrePresent(x : int, y : int): boolean
     + getPos() : int
 }
 
